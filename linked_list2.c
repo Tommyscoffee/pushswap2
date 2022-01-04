@@ -39,11 +39,29 @@ void	delete_list(struct s_node *first)
 		first = next;
 	}
 }
-
-int	ra_list(struct s_node **p)
+void	display(struct s_node *p)
 {
-
+	while (p != NULL)
+	{
+		printf("%d\n", p->data);
+		p = p->next;
+	}
 }
+int	list_delete_negatives(struct s_node **p)
+{
+	while (*p)
+	{
+	if ((*p)->data < 0)
+	{
+		struct s_node *next = (*p)->next;
+		free(*p);
+		(*p) = next;
+	}
+	else
+		p = (*p)->next;
+	}
+}
+
 
 int main()
 {
