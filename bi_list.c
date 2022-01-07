@@ -5,8 +5,8 @@
 // https://hiroyukichishiro.com/list-in-c-language/#i-4 
 typedef struct s_bi_list {
 	int					value;
-	t_bi_list	*next;
-	t_bi_list	*prev;
+	struct s_bi_list	*next;
+	struct s_bi_list	*prev;
 }		t_bi_list;
 void	init_sentinel(t_bi_list *sentinel)
 {
@@ -39,14 +39,42 @@ void	push_back_list(t_bi_list *sentinel, int value)
 	node->next = sentinel;//追加するノードのnextは番兵ノードになる。
 }
 
-void	show_list()
+
+
+void	show_list(t_bi_list *sentinel)
+{
+	t_bi_list	*node;
+	node = sentinel->next;
+	while (node != sentinel)
+	{
+		printf("%d\n",node->value);
+		node = node->next;
+	}
+	printf("sentinel\n");
+}
+
+int	insert_list(t_bi_list *sentinel, int value, size_t index)
+{
+	t_bi_list	*prev;
+	t_bi_list	*node;
+	int			i;
+
+	i = 0;
+	prev = sentinel;
+	while (i < index)
+	{
+		prev = prev->next;
+	}
+}
+
 int	main()
 {
 	t_bi_list	*sentinel;//番兵ノードとして宣言
 	init_sentinel(sentinel);//番兵ノードの作成
 	push_back_list(sentinel, 1);
-	while( 1 ){
-		print_explain();
-
-	}
+	push_back_list(sentinel, 2);
+	push_back_list(sentinel, 3);
+	push_back_list(sentinel, 5);
+	show_list(sentinel);
+	return (0);
 }
