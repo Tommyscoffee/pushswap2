@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/10 21:44:36 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/10 19:40:13 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,8 +121,9 @@ char	*ft_slice_str(const char *cmd_arg, char point)
 int	is_duplicated(t_bi_list *nil, int elm)
 {
 	int	i;
-	t_bi_list	*p;//
+	t_bi_list	*p;
 
+	p = (t_bi_list *)malloc(sizeof(t_bi_list));
 	p = nil;
 	i = 0;
 	while (p->next != nil)
@@ -236,12 +237,6 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 	p = nil;
 	i = 1;
 	j = 1;
-	nil->info = (t_info *)malloc(sizeof(t_info));
-	if (!nil->info)
-	{
-		printf("malloc error\n");
-		exit(1);
-	}
 	nil->info->stack_size = -1;
 	while (i < argc)
 	{
@@ -255,14 +250,21 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 		}
 		if (add_list(value, nil))
 		{
-			printf("add_list error\n");
-			exit (1);
+			return (1);
 		}
 		i++;
 		
 	}
 	return (0);
 }
+
+// void	init_nil(t_bi_list *nil)
+// {
+// 	nil->next = nil;
+// 	nil->prev = nil;
+// 	nil->value = 0;
+// 	return ;
+// }
 
 void	show_list(t_bi_list *nil)
 {
@@ -295,60 +297,23 @@ int	sa(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
 	return (0);
 }
 
-int	sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
-{
-	nil->next = low;
-	nil->prev = high;
-	low->next = high;
-	low->prev = nil;
-	high->next = nil;
-	high->prev = low;
-	return (0);
-}
-void	rotate(t_bi_list **lst)
-{
-	if ((*lst)->next)
-		*lst = (*lst)->next;
-}
-
-// int	ra(t_bi_list *nil)
-// {
-// 	nil->next = low;
-// 	nil->prev = high;
-// 	low->next = high;
-// 	low->prev = nil;
-// 	high->next = nil;
-// 	high->prev = low;
-// 	return (0);
-// }
-
-
-
-
 int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	if (argc < 4)
+	if (argc < 3)
 	{
-		if (argc == 2)
+		if (argc == 1)
 		{
 			show_list(nil_a);
 			show_list(nil_b);
 		}
-		if (argc == 3)
+		if (argc == 2)
 		{
-			printf("argc = 3\n");
 			if ( nil_a->next->value > nil_a->prev->value)
 				sa(nil_a, nil_a->next, nil_a->prev);
 			else
 			{
 				printf("何もしない\n");
 			}
-		}
-		if (argc == 4)
-		{
-			printf("argc = 4\n");
-			if (nil)
-
 		}
 	}
 	return (0);
@@ -364,7 +329,6 @@ void	ft_free(t_bi_list *nil)
 	{
 		tmp = p->next;
 		free(p);
-		// printf("%d\n",p->value);
 		p = tmp;
 	}
 	free(nil);
@@ -373,20 +337,58 @@ void	ft_free(t_bi_list *nil)
 int	main(int argc, char **argv)
 {
 	t_bi_list	*nil_a;
-	t_bi_list	*nil_b;
+	// t_bi_list	*nil_b;
 
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
 	// nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
 	printf("nil_aのメモリサイズ %lu\n",sizeof(t_bi_list));
 	init_nil(nil_a);
-	
+	// init_nil(nil_b);
+	// init_nil(nil_b);
+	// if (!stack.stack)
+	// {
+	// 	printf("----\n");
+	// 	exit(1);
+	// }
+	// i = 0;
+	// if (!ft_strcmp(argv[1], "-v") && argc <= 2)
+	// {
+	// 	printf("-vだけど、引数ないよ\n");
+	// 	return (1);
+	// }
+	// stack.debug = 0;
+	// if (!ft_strcmp(argv[1], "-v"))
+	// {
+	// 	stack.debug = 1;
+	// 	printf("===================debug\n");
+	// 	if ((argc - 1, &argv[1], &stack.stack))
+	// 		return (1);
+	// }
+	// else if (ft_strcmp(argv[1], "-v") && argc <= 1)
+	// {
+	// 	printf("-vないし引数もないよ\n");
+	// 	return (1);
+	// }
 	init_stack(argc, argv, nil_a);//スタックAに引数を入れていく
-	operation_stack(argc, nil_a, nil_b);
+	// init_stack(argc, argv, nil_b);//スタックBに引数を入れていく
+	// if (init_stack(argc, argv, nil_a))
+	// {
+	// 	free(nil_a);
+	// 	return (1);
+	// }
 	show_list(nil_a);//スタックAを表示している。
-
+	// show_list(nil_b);//スタックAを表示している。
+	// if (stack.debug)
+	// 	print_stacks(&stack.stack);
+	// operation_stack(argc, nil_a, nil_b);
+	// printf("stack_size = %d\n", );
+	// while (i < stack.stack_a.size)
+	// {
+	// 	printf("%d\n", stack.stack_a.array[i]);
+	// 	i++;
+	// }
 	printf("stack_size = %d\n",nil_a->info->stack_size);
 	ft_free(nil_a);
-	// ft_free(nil_b);
-	// system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }
