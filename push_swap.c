@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/10 21:44:36 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/11 20:16:15 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_bi_list {
 	int					value;
 	struct s_bi_list	*next;
 	struct s_bi_list	*prev;
-	int					rank;
+	int					rank;//番兵ノードはランク０
 	t_info				*info;
 }		t_bi_list;
 
@@ -144,12 +144,12 @@ int	add_list(int value, t_bi_list *nil)
 		printf("ダブってます: %d\n",value);
 		return (1);
 	}
-	prev = nil;
-	while (prev->next != nil)
-	{
-		prev = prev->next;
-		nil->info->stack_size++;
-	}
+	prev = nil->prev;
+	// while (prev->next != nil)
+	// {
+	// 	prev = prev->next;
+	// 	nil->info->stack_size++;
+	// }
 	node = (t_bi_list *)malloc(sizeof(t_bi_list));
 	if (!node)
 	{
@@ -305,6 +305,7 @@ int	sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
 	high->prev = low;
 	return (0);
 }
+
 void	rotate(t_bi_list **lst)
 {
 	if ((*lst)->next)
