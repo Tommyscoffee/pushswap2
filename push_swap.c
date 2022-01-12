@@ -6,7 +6,11 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2022/01/12 14:49:14 by akihito          ###   ########.fr       */
+=======
+/*   Updated: 2022/01/11 20:16:15 by atomizaw         ###   ########.fr       */
+>>>>>>> f643a69db574ff1d016b8235cdbc4be4b4c1cbdc
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +45,7 @@ typedef struct s_stack{
 	int				debug;
 }		t_stack;
 
+<<<<<<< HEAD
 // typedef struct s_bi_list {
 // 	int					value;
 // 	struct s_bi_list	*next;
@@ -48,6 +53,15 @@ typedef struct s_stack{
 // 	int					rank;
 // 	t_info				*info;
 // }		t_bi_list;
+=======
+typedef struct s_bi_list {
+	int					value;
+	struct s_bi_list	*next;
+	struct s_bi_list	*prev;
+	int					rank;//番兵ノードはランク０
+	t_info				*info;
+}		t_bi_list;
+>>>>>>> f643a69db574ff1d016b8235cdbc4be4b4c1cbdc
 
 size_t	count_stack(int argc, char **argv)
 {
@@ -144,12 +158,12 @@ int	add_list(int value, t_bi_list *nil)
 		printf("ダブってます: %d\n",value);
 		return (1);
 	}
-	prev = nil;
-	while (prev->next != nil)
-	{
-		prev = prev->next;
-		nil->info->stack_size++;
-	}
+	prev = nil->prev;
+	// while (prev->next != nil)
+	// {
+	// 	prev = prev->next;
+	// 	nil->info->stack_size++;
+	// }
 	node = (t_bi_list *)malloc(sizeof(t_bi_list));
 	if (!node)
 	{
@@ -285,6 +299,50 @@ void	init_nil(t_bi_list *nil)
 	return ;
 }
 
+<<<<<<< HEAD
+=======
+int	sa(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
+{
+	nil->next = low;
+	nil->prev = high;
+	low->next = high;
+	low->prev = nil;
+	high->next = nil;
+	high->prev = low;
+	return (0);
+}
+
+int	sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
+{
+	nil->next = low;
+	nil->prev = high;
+	low->next = high;
+	low->prev = nil;
+	high->next = nil;
+	high->prev = low;
+	return (0);
+}
+
+void	rotate(t_bi_list **lst)
+{
+	if ((*lst)->next)
+		*lst = (*lst)->next;
+}
+
+// int	ra(t_bi_list *nil)
+// {
+// 	nil->next = low;
+// 	nil->prev = high;
+// 	low->next = high;
+// 	low->prev = nil;
+// 	high->next = nil;
+// 	high->prev = low;
+// 	return (0);
+// }
+
+
+
+>>>>>>> f643a69db574ff1d016b8235cdbc4be4b4c1cbdc
 
 int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 {
