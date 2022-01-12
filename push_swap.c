@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/10 21:44:36 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/12 14:49:14 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include "libft/libft.h"
-
+#include "includes/pushswap.h"
 #define YELLOW "\x1b[33m"
 #define END		"\x1b[m"
 #define STACK_A "stack[0]"
@@ -27,10 +27,10 @@
 // #include "libmem_mgt/mem_mgt.h"
 // #include "libmem_mgt/replace_mem_mgt.h"
 //参考サイト　https://hiroyukichishiro.com/list-in-c-language/#i-4
-typedef struct s_info
-{
-	int	stack_size;
-}		t_info;
+// typedef struct s_info
+// {
+// 	int	stack_size;
+// }		t_info;
 
 typedef struct s_stack{
 	// struct s_info	*stack;//stack[0]->array = 0;
@@ -41,13 +41,13 @@ typedef struct s_stack{
 	int				debug;
 }		t_stack;
 
-typedef struct s_bi_list {
-	int					value;
-	struct s_bi_list	*next;
-	struct s_bi_list	*prev;
-	int					rank;
-	t_info				*info;
-}		t_bi_list;
+// typedef struct s_bi_list {
+// 	int					value;
+// 	struct s_bi_list	*next;
+// 	struct s_bi_list	*prev;
+// 	int					rank;
+// 	t_info				*info;
+// }		t_bi_list;
 
 size_t	count_stack(int argc, char **argv)
 {
@@ -216,7 +216,7 @@ int	check_alpha(char *str)
 				j++;
 			else
 			{
-				printf("アルファベット　エラー\n");
+				printf("アルファベット エラー\n");
 				exit(1);
 			}
 		}
@@ -280,61 +280,21 @@ void	init_nil(t_bi_list *nil)
 {
 	nil->next = nil;
 	nil->prev = nil;
-	nil->value = 0;
+	nil->value = -1;
+	nil->rank = 0;
 	return ;
 }
-
-int	sa(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
-{
-	nil->next = low;
-	nil->prev = high;
-	low->next = high;
-	low->prev = nil;
-	high->next = nil;
-	high->prev = low;
-	return (0);
-}
-
-int	sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
-{
-	nil->next = low;
-	nil->prev = high;
-	low->next = high;
-	low->prev = nil;
-	high->next = nil;
-	high->prev = low;
-	return (0);
-}
-void	rotate(t_bi_list **lst)
-{
-	if ((*lst)->next)
-		*lst = (*lst)->next;
-}
-
-// int	ra(t_bi_list *nil)
-// {
-// 	nil->next = low;
-// 	nil->prev = high;
-// 	low->next = high;
-// 	low->prev = nil;
-// 	high->next = nil;
-// 	high->prev = low;
-// 	return (0);
-// }
-
-
 
 
 int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	if (argc < 4)
+	if (argc <= 4)
 	{
 		if (argc == 2)
 		{
 			show_list(nil_a);
 			show_list(nil_b);
-		}
-		if (argc == 3)
+		}else if (argc == 3)
 		{
 			printf("argc = 3\n");
 			if ( nil_a->next->value > nil_a->prev->value)
@@ -343,12 +303,11 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 			{
 				printf("何もしない\n");
 			}
-		}
-		if (argc == 4)
+		}else if (argc == 4)
 		{
-			printf("argc = 4\n");
-			if (nil)
-
+			printf("pa\n");
+			pb(nil_a,nil_b);
+			// rra(nil_a);
 		}
 	}
 	return (0);
@@ -376,15 +335,20 @@ int	main(int argc, char **argv)
 	t_bi_list	*nil_b;
 
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
+	nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
 	// nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
 	printf("nil_aのメモリサイズ %lu\n",sizeof(t_bi_list));
 	init_nil(nil_a);
+	init_nil(nil_b);
 	
 	init_stack(argc, argv, nil_a);//スタックAに引数を入れていく
+	init_stack(argc, argv, nil_b);//スタックAに引数を入れていく
 	operation_stack(argc, nil_a, nil_b);
 	show_list(nil_a);//スタックAを表示している。
+	printf("=====\n");
+	show_list(nil_b);//スタックAを表示している。
 
-	printf("stack_size = %d\n",nil_a->info->stack_size);
+	// printf("stack_size = %d\n",nil_a->info->stack_size);
 	ft_free(nil_a);
 	// ft_free(nil_b);
 	// system("leaks a.out");
