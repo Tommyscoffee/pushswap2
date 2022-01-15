@@ -6,27 +6,34 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/12 21:16:11 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/15 17:50:42 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
 
-int	sb(t_bi_list *a)
+int	sb(t_bi_list *b)
 {
-	t_bi_list *high;
-	t_bi_list *low;
+	t_bi_list *first;
+	t_bi_list *second;
+	t_bi_list *third;
 
-	if (a->next->value == -1)
+	if (b->next->next == b)
+	{
+		write(1,"no\n",3);
 		return (TRUE);
+	}
 	write(1, "[sb]\n", 5);
-	a->next = low;
-	a->prev = high;
-	low->next = high;
-	low->prev = a;
-	high->next = a;
-	high->prev = low;
-	show_list(a);
+	first = b->next;
+	second = b->next->next;
+	third = b->next->next->next;
+	
+	b->next = second;
+	second->next = first;
+	first->next = third;
+	third->prev = first;
+	first->prev = second;
+	second->prev = b;
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/12 21:17:52 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/15 18:10:20 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,7 +276,7 @@ void	init_nil(t_bi_list *nil)
 	nil->next = nil;
 	nil->prev = nil;
 	nil->value = -1;
-	nil->rank = 0;
+	// nil->rank = 0;
 	return ;
 }
 
@@ -327,6 +327,7 @@ int	main(int argc, char **argv)
 	t_bi_list	*nil_a;
 	t_bi_list	*nil_b;
 
+	printf("t_bi_list byte = %d\n",sizeof(t_bi_list));
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
 	nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
 	init_nil(nil_a);
@@ -346,30 +347,37 @@ int	main(int argc, char **argv)
 	// show_list(nil_a);//スタックAを表示している。
 	// printf("=====\n");
 
-	print_stacks(nil_a, nil_b);
-	pb(nil_a,nil_b);
-	pb(nil_a,nil_b);
-	pb(nil_a,nil_b);
-	rrb(nil_b);
-	print_stacks(nil_a, nil_b);
-	rrb(nil_b);
-	print_stacks(nil_a, nil_b);
-	rrb(nil_b);
-	// pb(nil_a, nil_b);
-	// pb(nil_a, nil_b);
-	// pb(nil_a, nil_b);
-	// pb(nil_a, nil_b);
-	// // print_stacks(nil_a, nil_b);
-	// pa(nil_a, nil_b);
-	// if (sa(nil_a))
-	// {
-	// 	printf("sa_error\n");
-	// 	exit(1);
-	// }
-	print_stacks(nil_a, nil_b);
-	printf("stack_size = %d\n",nil_a->stack_size);
+	// print_stacks(nil_a, nil_b);
+	// pb(nil_a,nil_b);
+	// pb(nil_a,nil_b);
+	// pb(nil_a,nil_b);
+	// rrb(nil_b);
+	// print_stacks(nil_a, nil_b);
+	// rrb(nil_b);
+	// print_stacks(nil_a, nil_b);
+	// rrb(nil_b);
+	// print_stacks(nil_a, nil_b);
+	// sa(nil_a);
+	// print_stacks(nil_a, nil_b);
+	// sb(nil_b);
+	// print_stacks(nil_a, nil_b);
+	// // rr(nil_a,nil_b);
+	// // pb(nil_a, nil_b);
+	// // pb(nil_a, nil_b);
+	// // pb(nil_a, nil_b);
+	// // pb(nil_a, nil_b);
+	// // // print_stacks(nil_a, nil_b);
+	// // pa(nil_a, nil_b);
+	// // if (sa(nil_a))
+	// // {
+	// // 	printf("sa_error\n");
+	// // 	exit(1);
+	// // }
+	// printf("stack_size = %d\n",nil_a->stack_size);
+	system("leaks a.out");
+	free(nil_a->info);
 	ft_free(nil_a);
 	ft_free(nil_b);
-	// system("leaks a.out");
+	system("leaks a.out");
 	return (0);
 }

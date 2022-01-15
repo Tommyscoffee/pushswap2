@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/12 21:14:04 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/15 17:52:42 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,27 @@
 
 int	sa(t_bi_list *a)
 {
-	t_bi_list	*first;
-	t_bi_list	*second;
-	t_bi_list	*third;
+	t_bi_list *first;
+	t_bi_list *second;
+	t_bi_list *third;
 
 	if (a->next->next == a)
 	{
+		write(1,"no\n",3);
 		return (TRUE);
 	}
 	write(1, "[sa]\n", 5);
 	first = a->next;
 	second = a->next->next;
 	third = a->next->next->next;
+	
 	a->next = second;
 	second->next = first;
 	first->next = third;
 	third->prev = first;
 	first->prev = second;
 	second->prev = a;
-
-	// first->next = third;
-	// first->prev = second;
-	// second->prev = a;
-	// third->prev = first;
-	// second->next = first;
-	return (FALSE);
+	return (0);
 }
 
 int	pa(t_bi_list *a, t_bi_list *b)

@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/12 21:33:53 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/15 17:55:44 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_bi_list {
 	int					value;
 	struct s_bi_list	*next;
 	struct s_bi_list	*prev;
-	int					rank;
+	// int					rank;
 	int					stack_size;
 	t_info				*info;
 }		t_bi_list;
@@ -46,6 +46,7 @@ int		pa(t_bi_list *a, t_bi_list *b);
 int		pb(t_bi_list *a, t_bi_list *b);
 void	show_list(t_bi_list *nil);
 int		rr(t_bi_list *a, t_bi_list *b);
+int		ss(t_bi_list *a, t_bi_list *b);
 //debug
 int	get_digits(int	nbr);
 int	get_max_digits(t_bi_list *nil);
