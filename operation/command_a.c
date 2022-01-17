@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/15 17:52:42 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/16 00:13:28 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	ra(t_bi_list *nil)
 	first->next = nil;
 	first->prev = bottom;
 	bottom->next = first;
-	show_list(nil);
 	return (FALSE);
 }
 

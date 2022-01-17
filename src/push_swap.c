@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/15 18:10:20 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/17 13:07:04 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,14 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <limits.h>
-#include "libft/libft.h"
-#include "includes/pushswap.h"
+#include "../libft/libft.h"
+#include "../includes/pushswap.h"
 #define YELLOW "\x1b[33m"
 #define END		"\x1b[m"
 #define STACK_A "stack[0]"
 #define STACK_B "stack[1]"
 #define TRUE	1
 #define FALSE	0
-
-//これらはtkiriharさんのメモリ管理
-// #include "libmem_mgt/mem_mgt.h"
-// #include "libmem_mgt/replace_mem_mgt.h"
-//参考サイト　https://hiroyukichishiro.com/list-in-c-language/#i-4
-// typedef struct s_info
-// {
-// 	int	stack_size;
-// }		t_info;
-
-typedef struct s_stack{
-	// struct s_info	*stack;//stack[0]->array = 0;
-	struct s_info	stack[2];//スタック領域に値が書き込まれる。
-	// struct s_info	*stack;//この時点ではポインタだけで、この後はmallocして
-	// struct s_info	stack_a;
-	// struct s_info	stack_b;
-	int				debug;
-}		t_stack;
-
-// typedef struct s_bi_list {
-// 	int					value;
-// 	struct s_bi_list	*next;
-// 	struct s_bi_list	*prev;
-// 	int					rank;
-// 	t_info				*info;
-// }		t_bi_list;
 
 size_t	count_stack(int argc, char **argv)
 {
@@ -159,44 +133,6 @@ int	add_list(int value, t_bi_list *nil)
 	return (0);
 }
 
-int	ft_isspace(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'
-		|| str[i] == '\v' || str[i] == '\r' || str[i] == '\f')
-		i++;
-	return (i);
-}
-
-long	ft_atol(const char *str)
-{
-	int			i;
-	int			sign;
-	long long	ans;
-
-	sign = 1;
-	ans = 0;
-	i = ft_isspace(str);
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] <= '9' && str[i] >= '0')
-	{
-		ans = ans * 10 + str[i] - '0';
-		if (ans > LLONG_MAX && sign == 1)
-			return (-1);
-		if (ans - 1 > LLONG_MAX && sign == -1)
-			return (0);
-		i++;
-	}
-	return ((long)ans * sign);
-}
-
 
 int	check_alpha(char *str)
 {
@@ -221,96 +157,13 @@ int	check_alpha(char *str)
 }
 
 
-int	init_stack(int argc, char **argv, t_bi_list *nil)
-{
-	size_t	i;
-	size_t	j;
-	t_bi_list	*node;
-	t_bi_list	*p;
-	long	value;//これをsize_tにすると必ず「引数が範囲外」となる
-	p = nil;
-	i = 1;
-	j = 1;
-	nil->info = (t_info *)malloc(sizeof(t_info));
-	if (!nil->info)
-	{
-		printf("malloc error\n");
-		exit(1);
-	}
-	nil->info->stack_size = argc;
-	while (i < argc)
-	{
-		
-		check_alpha(argv[i]);
-		value = ft_atol(argv[i]);
-		if (value > 2147483647 || value < -2147483648)//引数がintの範囲
-		{
-			printf("引数が範囲外です\n");
-			exit (1);
-		}
-		if (add_list(value, nil))
-		{
-			printf("add_list error\n");
-			exit (1);
-		}
-		i++;
-		
-	}
-	return (0);
-}
-
-void	show_list(t_bi_list *nil)
-{
-	t_bi_list	*node;
-	node = nil->next;
-	while (node != nil)
-	{
-		printf("%d\n",node->value);
-		node = node->next;
-	}
-	printf("nil\n");
-}
-
-void	init_nil(t_bi_list *nil)
-{
-	nil->next = nil;
-	nil->prev = nil;
-	nil->value = -1;
-	// nil->rank = 0;
-	return ;
-}
-
-int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
-{
-	if (argc <= 4)
-	{
-		if (argc == 2)
-		{
-			show_list(nil_a);
-			show_list(nil_b);
-		}else if (argc == 3)
-		{
-			printf("argc = 3\n");
-			if ( nil_a->next->value > nil_a->prev->value)
-				sa(nil_a);
-			else
-			{
-				printf("何もしない\n");
-			}
-		}else if (argc == 4)
-		{
-			pb(nil_a,nil_b);
-			// rra(nil_a);
-		}
-	}
-	return (0);
-}
-
 void	ft_free(t_bi_list *nil)
 {
 	t_bi_list	*p;
 	t_bi_list	*tmp;
 
+	if (nil->info)
+		free(nil->info);
 	p = nil->next;
 	while (p != nil)
 	{
@@ -327,30 +180,17 @@ int	main(int argc, char **argv)
 	t_bi_list	*nil_a;
 	t_bi_list	*nil_b;
 
-	printf("t_bi_list byte = %d\n",sizeof(t_bi_list));
+	printf("t_bi_list byte = %lu\n",sizeof(t_bi_list));
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
 	nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
 	init_nil(nil_a);
 	init_nil(nil_b);
 	nil_a->stack_size = argc - 1;
 	init_stack(argc, argv, nil_a);//スタックAに引数を入れていく
-	// printf("初期値\n");
-	// show_list(nil_a);//スタックAを表示している。
-	// printf("=====\n");
-	// show_list(nil_b);//スタックAを表示している。
-	
-	// pa(nil_a, nil_b);
+	init_array(nil_a);
+	print_stacks(nil_a, nil_b);
 	// operation_stack(argc, nil_a, nil_b);
 	
-	// printf("最後\n");
-	// printf("=====\n");
-	// show_list(nil_a);//スタックAを表示している。
-	// printf("=====\n");
-
-	// print_stacks(nil_a, nil_b);
-	// pb(nil_a,nil_b);
-	// pb(nil_a,nil_b);
-	// pb(nil_a,nil_b);
 	// rrb(nil_b);
 	// print_stacks(nil_a, nil_b);
 	// rrb(nil_b);
@@ -361,23 +201,22 @@ int	main(int argc, char **argv)
 	// print_stacks(nil_a, nil_b);
 	// sb(nil_b);
 	// print_stacks(nil_a, nil_b);
-	// // rr(nil_a,nil_b);
-	// // pb(nil_a, nil_b);
-	// // pb(nil_a, nil_b);
-	// // pb(nil_a, nil_b);
-	// // pb(nil_a, nil_b);
-	// // // print_stacks(nil_a, nil_b);
-	// // pa(nil_a, nil_b);
-	// // if (sa(nil_a))
-	// // {
-	// // 	printf("sa_error\n");
-	// // 	exit(1);
-	// // }
+	// rr(nil_a,nil_b);
+	// pb(nil_a, nil_b);
+	// pb(nil_a, nil_b);
+	// pb(nil_a, nil_b);
+	// pb(nil_a, nil_b);
+	// // print_stacks(nil_a, nil_b);
+	// pa(nil_a, nil_b);
+	// if (sa(nil_a))
+	// {
+	// 	printf("sa_error\n");
+	// 	exit(1);
+	// }
+	// print_stacks(nil_a, nil_b);
 	// printf("stack_size = %d\n",nil_a->stack_size);
-	system("leaks a.out");
-	free(nil_a->info);
 	ft_free(nil_a);
 	ft_free(nil_b);
-	system("leaks a.out");
+	// system("leaks a.out");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:36:42 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/12 21:09:01 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/17 12:12:37 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	get_max_digits(t_bi_list *nil)
 	p = nil->next;
 	if (nil->next == nil)//スタックが空か１つだったらエラー
 		return (2);//nil->valueの-1分の桁数を返してあげる
+	// size = get_digits(p->value);
 	size = get_digits(p->value);
 	i = 1;
 	while (p != nil)
@@ -71,17 +72,11 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 	i = 0;
 	line_size = nil_a->stack_size;
 	// printf("max_size %d\n", line_size);
-	// write(STDOUT_FILENO, YELLOW, ft_strlen(YELLOW));
-	// write(STDOUT_FILENO, "stacks\n", 7);
-	// write(STDOUT_FILENO, END, ft_strlen(END));
 
 	max_digits[0] = get_max_digits(nil_a);//最大桁数を検出する
 	max_digits[1] = get_max_digits(nil_b);//最大桁数を検出する
 	if (max_digits[0] < max_digits[1])
 		max_digits[0] = max_digits[1];
-	// printf("max_digits[0] %d\n", max_digits[0]);
-	// printf("max_digits[1] %d\n", max_digits[1]);
-
 	// ここでそれぞれのスタックの幅をmax_nbr[]にしてあげるて、型を作る
 	// max_size:スタックの要素数, max_digits:スタックごとの最大桁　で空白をwriteする
 	// max_digits - get_digits(array[i]) で空白を出力
@@ -117,6 +112,7 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 		if (p_a != nil_a)
 		{
 			ft_putnbr_fd(p_a->value, 1);
+			// ft_putnbr_fd(p_a->rank, 1);
 			p_a = p_a->next;
 		}
 		write(1, " |", 2);
@@ -124,6 +120,7 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 		if (p_b != nil_b)
 		{
 			ft_putnbr_fd(p_b->value, 1);
+			// ft_putnbr_fd(p_b->rank, 1);
 			p_b = p_b->next;
 		}
 		ft_putchar_fd('\n', 1);
