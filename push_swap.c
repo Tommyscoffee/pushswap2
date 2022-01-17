@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/11 20:16:15 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/12 17:29:54 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,7 +308,7 @@ int	sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low)
 
 void	rotate(t_bi_list **lst)
 {
-	if ((*lst)->next)
+	if ((*lst)->next )
 		*lst = (*lst)->next;
 }
 
