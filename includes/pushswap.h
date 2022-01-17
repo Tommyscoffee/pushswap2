@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/12 14:47:56 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/17 00:19:40 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,35 @@ typedef struct s_bi_list {
 	struct s_bi_list	*next;
 	struct s_bi_list	*prev;
 	int					rank;
+	int					stack_size;
 	t_info				*info;
+	int					array[];
 }		t_bi_list;
 
+int		ft_isspace(const char *str);
+long	ft_atol(const char *str);
+int		add_list(int value, t_bi_list *nil);
+int		check_alpha(char *str);
+int		operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b);
+int		ft_isspace(const char *str);
+long	ft_atol(const char *str);
+int		init_stack(int argc, char **argv, t_bi_list *nil);
+void	init_nil(t_bi_list *nil);
+int		init_array(t_bi_list *nil_a);
 void	rotate(t_bi_list **lst);
-int		sb(t_bi_list *nil, t_bi_list *high, t_bi_list *low);
-int		sa(t_bi_list *nil, t_bi_list *high, t_bi_list *low);
+int		sa(t_bi_list *nil);
+int		sb(t_bi_list *nil);
 int		ra(t_bi_list *nil);
+int		rb(t_bi_list *nil);
 int		rra(t_bi_list *nil);
+int		rrb(t_bi_list *nil);
 int		pa(t_bi_list *a, t_bi_list *b);
 int		pb(t_bi_list *a, t_bi_list *b);
+int		rr(t_bi_list *a, t_bi_list *b);
+int		ss(t_bi_list *a, t_bi_list *b);
+
+//debug
+int	get_digits(int	nbr);
+int	get_max_digits(t_bi_list *nil);
+int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b);
 # endif
