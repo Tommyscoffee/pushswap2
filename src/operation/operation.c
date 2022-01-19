@@ -6,11 +6,11 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 22:22:12 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 10:44:46 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:43:13 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 // 3個の引数は２個以内のアクションで納める。
 
 int	arg_3(t_bi_list *nil)
@@ -109,7 +109,7 @@ int	arg_2(t_bi_list *nil)
 	return (0);
 }
 
-int	arg_5(t_bi_list *nil_a, t_bi_list *nil_b)
+int	arg_6(t_bi_list *nil_a, t_bi_list *nil_b)
 {//yllow3を参照　rank1,2をpbする。し終わったらスタックAをソート
 	t_bi_list	*p;
 	int			i;
@@ -149,7 +149,7 @@ int	arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 	else if (argc >= 6)
 	{
 		printf("5個\n");
-		arg_5(nil_a, nil_b);
+		arg_6(nil_a, nil_b);
 		return (0);
 	}
 	return (0);
@@ -178,13 +178,19 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 				printf("何もしない\n");
 			}
 		}
-		else if (argc >= 4)
+		else if (argc >= 4 && argc <= 7)
 		{
 			printf("argc = %d\n", argc);
 			arg_3_to_6(argc, nil_a, nil_b);
 			// pb(nil_a,nil_b);
 			// rra(nil_a);
 		}
+	}
+	else
+	{
+		printf("pivot = %d\n", nil_a->pivot);
+		Qsort(nil_a, nil_b);
+		print_stacks(nil_a, nil_b);
 	}
 	return (0);
 }

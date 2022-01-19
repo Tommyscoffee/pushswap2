@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 11:20:20 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 13:31:38 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ typedef struct s_bi_list {
 	t_info				*info;
 	int 				which;
 	int					*array;
+	int					pivot;//クイックソートする基準（stack_sizeの中央値）
 }		t_bi_list;
 
+int		Qsort(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_6(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_2(t_bi_list *nil_b);

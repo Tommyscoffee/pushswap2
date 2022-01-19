@@ -6,11 +6,11 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 21:25:18 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/15 17:28:41 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 12:33:36 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 int ss(t_bi_list *a, t_bi_list *b)
 {
 	int		exec;

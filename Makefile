@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+         #
+#    By: akihito <akihito@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 21:27:07 by akihito           #+#    #+#              #
-#    Updated: 2022/01/17 19:07:20 by atomizaw         ###   ########.fr        #
+#    Updated: 2022/01/19 13:33:20 by akihito          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ EXEC_DIR = exec
 
 SRC = src/push_swap.c\
 		src/utils.c\
-		operation/command_a.c\
-		operation/command_b.c\
-		operation/command_both.c\
-		operation/operation.c\
+		src/operation/command_a.c\
+		src/operation/command_b.c\
+		src/operation/command_both.c\
+		src/operation/operation.c\
+		src/quick_sort/Qsort.c\
 		inits/init_func.c
 
 DEBUG_SRC = debug/debug.c

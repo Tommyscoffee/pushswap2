@@ -1,65 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_a.c                                        :+:      :+:    :+:   */
+/*   command_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/17 16:23:19 by atomizaw         ###   ########.fr       */
+/*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
+/*   Updated: 2022/01/19 12:33:39 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/pushswap.h"
+#include "../../includes/pushswap.h"
 
-int	sa(t_bi_list *a)
+int	sb(t_bi_list *b)
 {
-	t_bi_list	*first;
-	t_bi_list	*second;
-	t_bi_list	*third;
+	t_bi_list *first;
+	t_bi_list *second;
+	t_bi_list *third;
 
-	if (a->next->next == a)
+	if (b->next->next == b)
 	{
-		write(1, "no\n", 3);
+		write(1,"no\n",3);
 		return (TRUE);
 	}
-	write(1, "[sa]\n", 5);
-	first = a->next;
-	second = a->next->next;
-	third = a->next->next->next;
-
-	a->next = second;
+	write(1, "[sb]\n", 5);
+	first = b->next;
+	second = b->next->next;
+	third = b->next->next->next;
+	
+	b->next = second;
 	second->next = first;
 	first->next = third;
 	third->prev = first;
 	first->prev = second;
-	second->prev = a;
+	second->prev = b;
 	return (0);
 }
 
-int	pa(t_bi_list *a, t_bi_list *b)
+int	pb(t_bi_list *a, t_bi_list *b)
 {
 	t_bi_list	*first_a;
 	t_bi_list	*first_b;
-	t_bi_list	*second_b;
+	t_bi_list	*second_a;
 
-	if (b->next->value == -1)
+	if (a->next->value == -1)
 		return (TRUE);
-	write(1, "[pa]\n", 5);
+	write(1, "[pb]\n", 5);
 	first_a = a->next;
 	first_b = b->next;
-	second_b = b->next->next;
-	b->next = second_b;
-	second_b->prev = b;
-	a->next = first_b;
-	first_b->next = first_a;
-	first_a->prev = first_b;
-	first_b->prev = a;
-	print_stacks(a, b);
+	second_a = a->next->next;
+	a->next = second_a;
+	second_a->prev = a;
+	b->next = first_a;
+	first_a->next = first_b;
+	first_b->prev = first_a;
+	first_a->prev = b;
+	print_stacks(a,b);
 	return (FALSE);
 }
 
-int	ra(t_bi_list *nil)
+int	rb(t_bi_list *nil)
 {
 	t_bi_list	*first;
 	t_bi_list	*second;
@@ -67,7 +67,7 @@ int	ra(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[ra]\n", 5);
+	write(1, "[rb]\n", 5);
 	first = nil->next;
 	second = nil->next->next;
 	bottom = nil->prev;
@@ -80,7 +80,7 @@ int	ra(t_bi_list *nil)
 	return (FALSE);
 }
 
-int	rra(t_bi_list *nil)
+int	rrb(t_bi_list *nil)
 {
 	t_bi_list	*bottom;
 	t_bi_list	*first;
@@ -88,7 +88,7 @@ int	rra(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[rra]\n", 6);
+	write(1, "[rrb]\n", 6);
 	bottom = nil->prev;
 	first = nil->next;
 	second = nil->prev->prev;
