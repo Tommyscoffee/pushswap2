@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/17 19:01:15 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/19 00:41:23 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,8 @@ int	main(int argc, char **argv)
 	printf("t_bi_list byte = %lu\n", sizeof(t_bi_list));
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
 	nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
+	nil_a->which = A;
+	nil_b->which = B;
 	init_nil(nil_a);
 	init_nil(nil_b);
 	nil_a->stack_size = argc - 1;
@@ -130,7 +132,8 @@ int	main(int argc, char **argv)
 	// printf("==\n");
 	operation_stack(argc, nil_a, nil_b);
 	// rra(nil_a);
-	print_stacks(nil_a, nil_b);
+	if (!is_sorted(nil_a))
+		printf("sort done\n");
 	printf("nil_rank = %d\n",nil_a->rank);
 	printf("first_rank = %d\n",nil_a->next->rank);
 	// print_stacks(nil_a, nil_b);

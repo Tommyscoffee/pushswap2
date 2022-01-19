@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 22:22:12 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/17 19:44:42 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/19 10:44:46 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,27 +73,51 @@ int	is_sorted(t_bi_list *nil)
 {
 	t_bi_list	*p;
 
-	p = nil->next;
-	while (p != nil)
+	p = nil->next;//
+	while (p->next != nil)
 	{
 		if (p->rank > p->next->rank)
-		{
-			return (0);
+		{//未ソートだったら1を返す
+			return (1);
 		}
 		p = p->next;
 	}
-	return (1);
+	return (0);
+}
+
+int	arg_2(t_bi_list *nil)
+{
+	t_bi_list	*p;
+
+	p = nil->next;
+	if (nil->which == A)
+	{
+		if (p->next->rank > p->next->next->rank)
+		{
+			sa(nil);
+			return (0);
+		}
+	}
+	else
+	{
+		if (p->next->rank < p->next->next->rank)
+		{
+			sb(nil);
+			return (0);
+		}
+	}
+	return (0);
 }
 
 int	arg_5(t_bi_list *nil_a, t_bi_list *nil_b)
 {//yllow3を参照　rank1,2をpbする。し終わったらスタックAをソート
-	// pb(nil_a, nil_b);
-	// pb(nil_a, nil_b);
-	// arg_3(nil_a);//スタックAをソート
 	t_bi_list	*p;
-	int	i = 0;
+	int			i;
+
+	i = 0;
 	p = nil_a->next;
-	while (is_sorted(p))
+	printf("stack_size = %d\n",nil_a->stack_size);
+	while (i < nil_a->stack_size)
 	{
 		if (p->rank == 1 || p->rank == 2)
 		{
@@ -103,31 +127,29 @@ int	arg_5(t_bi_list *nil_a, t_bi_list *nil_b)
 		{
 			ra(nil_a);
 		}
-		print_stacks(nil_a, nil_b);
 		p = nil_a->next;
+		i++;
+		// print_stacks(nil_a, nil_b);
 	}
 	arg_3(nil_a);
+	// print_stacks(nil_a, nil_b);
+	arg_2(nil_b);
 	pa(nil_a, nil_b);
 	pa(nil_a, nil_b);
 	return (0);
 }
 
-int	arg_3_to_5(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
+int	arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	if (argc == 4)
 	{
 		printf("ok\n");
 		arg_3(nil_a);
 	}
-	else if (argc == 6)
+	else if (argc >= 6)
 	{
 		printf("5個\n");
 		arg_5(nil_a, nil_b);
-		// if (nil_a->next->rank > nil_a->next->next->rank)
-		// {
-		// 	// ra(nil);
-		// 	return (0);
-		// }
 		return (0);
 	}
 	return (0);
@@ -159,7 +181,7 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 		else if (argc >= 4)
 		{
 			printf("argc = %d\n", argc);
-			arg_3_to_5(argc, nil_a, nil_b);
+			arg_3_to_6(argc, nil_a, nil_b);
 			// pb(nil_a,nil_b);
 			// rra(nil_a);
 		}

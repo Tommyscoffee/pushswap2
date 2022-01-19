@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/17 18:09:57 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/17 23:23:00 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,12 @@ int	init_array(t_bi_list *nil_a)
 
 int	init_stack(int argc, char **argv, t_bi_list *nil)
 {
-	size_t	i;
-	size_t	j;
+	size_t		i;
+	size_t		j;
 	t_bi_list	*node;
 	t_bi_list	*p;
-	long	value;//これをsize_tにすると必ず「引数が範囲外」となる
+	long		value;//これをsize_tにすると必ず「引数が範囲外」となる
+
 	p = nil;
 	i = 1;
 	j = 1;
@@ -118,7 +119,6 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 	nil->info->stack_size = argc;
 	while (i < argc)
 	{
-		
 		check_alpha(argv[i]);
 		value = ft_atol(argv[i]);
 		if (value > 2147483647 || value < -2147483648)//引数がintの範囲
