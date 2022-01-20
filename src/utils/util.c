@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Qsort.c                                            :+:      :+:    :+:   */
+/*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 21:37:02 by atomizaw         ###   ########.fr       */
+/*   Created: 2022/01/19 20:46:28 by atomizaw          #+#    #+#             */
+/*   Updated: 2022/01/19 20:46:42 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
+int	is_sorted(t_bi_list *nil)
 {
 	t_bi_list	*p;
 
-	nil_a->pivot = (nil_a->stack_size) / 2;
-	printf("QUICKSORT\n");
-	printf("stack_size %d\n", nil_a->stack_size);
-	p = nil_a->next;
-	while (p != nil_a)
+	p = nil->next;//
+	while (p->next != nil)
 	{
-		printf("while\n");
-		if (p->rank <= nil_a->pivot)
-		{
-			pb(nil_a, nil_b);
+		if (p->rank > p->next->rank)
+		{//未ソートだったら1を返す
+			return (1);
 		}
 		p = p->next;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 13:48:38 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 21:23:01 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	init_nil(t_bi_list *nil)
 	nil->next = nil;
 	nil->prev = nil;
 	nil->value = -1;
-	nil->rank = 0;
+	nil->rank = -1;
 	nil->pivot = 0;
 	return ;
 }
 
-void	asort(size_t *a, int idx){
+void	asort(size_t *a, int idx)
+{
 	int	i;
 	int	j;
 	int	tmp;

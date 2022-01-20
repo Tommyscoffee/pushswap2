@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/19 00:41:23 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 20:07:25 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,9 +128,8 @@ int	main(int argc, char **argv)
 	nil_a->stack_size = argc - 1;
 	init_stack(argc, argv, nil_a);//スタックAに引数を入れていく
 	init_array(nil_a);
-	// print_stacks(nil_a, nil_b);
-	// printf("==\n");
 	operation_stack(argc, nil_a, nil_b);
+	print_stacks(nil_a, nil_b);
 	// rra(nil_a);
 	if (!is_sorted(nil_a))
 		printf("sort done\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 12:33:39 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 19:40:02 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	sb(t_bi_list *b)
 	first = b->next;
 	second = b->next->next;
 	third = b->next->next->next;
-	
 	b->next = second;
 	second->next = first;
 	first->next = third;

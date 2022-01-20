@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 13:31:38 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/19 20:48:28 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ typedef struct s_bi_list {
 	int					*array;
 	int					pivot;//クイックソートする基準（stack_sizeの中央値）
 }		t_bi_list;
-
+int		arg_3(t_bi_list *nil);
+int		sort_3_b_second(t_bi_list *nil_b);
+int	 	sort_3_b_first(t_bi_list *nil_b);
+int		sort_3_a_first(t_bi_list *nil_a);
+int		sort_3_a_second(t_bi_list *nil_a);
+int		arg_5(t_bi_list *nil_a, t_bi_list *nil_b);
 int		Qsort(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_6(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b);
