@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 21:23:01 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/20 23:36:25 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	init_nil(t_bi_list *nil)
 	nil->value = -1;
 	nil->rank = -1;
 	nil->pivot = 0;
+	nil->stack_size = 0;
+	nil->status = 0;
 	return ;
 }
 
@@ -65,14 +67,13 @@ int	init_rank(t_bi_list *nil, size_t *sorted)
 			if (p->value == sorted[i])
 			{
 				p->rank = i + 1;
-				break;
+				break ;
 			}
 			i++;
 		}
 		p = p->next;
 	}
 	return (0);
-
 }
 
 int	init_array(t_bi_list *nil_a)
@@ -94,11 +95,10 @@ int	init_array(t_bi_list *nil_a)
 	i = 0;
 	while (i < nil_a->stack_size)
 	{
-		printf("array = %zu\n",array[i]);
+		printf("array = %zu\n", array[i]);
 		i++;
 	}
 	return (0);
-	
 }
 
 int	init_stack(int argc, char **argv, t_bi_list *nil)
@@ -134,7 +134,6 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 			exit (1);
 		}
 		i++;
-		
 	}
 	return (0);
 }

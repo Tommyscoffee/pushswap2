@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 20:48:28 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/20 23:11:02 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ typedef struct s_bi_list {
 	int 				which;
 	int					*array;
 	int					pivot;//クイックソートする基準（stack_sizeの中央値）
+	int					status;
 }		t_bi_list;
+
 int		arg_3(t_bi_list *nil);
 int		sort_3_b_second(t_bi_list *nil_b);
 int	 	sort_3_b_first(t_bi_list *nil_b);

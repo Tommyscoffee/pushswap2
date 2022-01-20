@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/19 20:07:25 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/20 23:37:29 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ size_t	count_stack(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			// printf("argv[%zu][%zu] = %c\n", i, j, argv[i][j]);
 			if ((!j || argv[i][j - 1] == ' ') && argv[i][j] != ' ')
 			{
 				size++;// " 4  5 6"
