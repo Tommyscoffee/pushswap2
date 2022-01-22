@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 13:41:22 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 15:54:53 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	pa(t_bi_list *a, t_bi_list *b)
 	if (b->next->value == -1)
 		return (TRUE);
 	write(1, "[pa]\n", 5);
+	b->size_now--;
+	a->size_now++;
 	first_a = a->next;
 	first_b = b->next;
 	second_b = b->next->next;

@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 20:46:28 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/22 13:46:18 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 16:18:20 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int	is_sorted(t_bi_list *nil)
 		p = p->next;
 		i++;
 	}
-	if (i != nil->stack_size)
+	printf("nil->size_now = %d\n", nil->size_now);
+	if (nil->size_now != nil->stack_size)
 		return (1);
 	return (0);
 }

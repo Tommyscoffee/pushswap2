@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/20 23:36:25 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/22 16:02:33 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,13 +112,13 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 	p = nil;
 	i = 1;
 	j = 1;
-	nil->info = (t_info *)malloc(sizeof(t_info));
-	if (!nil->info)
-	{
-		printf("malloc error\n");
-		exit(1);
-	}
-	nil->info->stack_size = argc;
+	// nil->info = (t_info *)malloc(sizeof(t_info));//もういらない
+	// if (!nil->info)
+	// {
+	// 	printf("malloc error\n");
+	// 	exit(1);
+	// }
+	// nil->info->stack_size = argc;
 	while (i < argc)
 	{
 		check_alpha(argv[i]);

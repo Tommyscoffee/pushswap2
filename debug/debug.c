@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:36:42 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 13:44:43 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 15:49:21 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	show_stack(t_bi_list *nil)
 	p = nil->next;
 	while (p != nil)
 	{
-		printf("%d (%d)\n",p->value, p->rank);
+		printf("%d (%d)\n", p->value, p->rank);
 		p = p->next;
 	}
 	return (0);
@@ -53,8 +53,8 @@ int	get_digits(int	nbr)
 
 int	get_max_digits(t_bi_list *nil)
 {
-	int		size;
-	size_t	i;
+	int			size;
+	size_t		i;
 	t_bi_list	*p;
 
 	p = nil->next;
@@ -74,10 +74,10 @@ int	get_max_digits(t_bi_list *nil)
 
 int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	int	line_size;//-vで表示する行数（＝引数の数）
-	int	max_digits[2];//それぞれのスタックで一番大きい桁数（＝横幅にする）
-	int	line_len[2];//各行の要素の桁数
-	int	i;
+	int			line_size;//-vで表示する行数（＝引数の数）
+	int			max_digits[2];//それぞれのスタックで一番大きい桁数（＝横幅にする）
+	int			line_len[2];//各行の要素の桁数
+	int			i;
 	t_bi_list	*p_a;
 	t_bi_list	*p_b;
 

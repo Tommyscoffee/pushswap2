@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/22 00:11:55 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 16:15:16 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,19 +129,16 @@ int	main(int argc, char **argv)
 	init_array(nil_a);
 	print_stacks(nil_a, nil_b);
 	operation_stack(argc, nil_a, nil_b);
-	print_stacks(nil_a, nil_b);
-	// rra(nil_a);
 	if (!is_sorted(nil_a))
 	{
 		write(STDOUT_FILENO, YELLOW, ft_strlen(YELLOW));
 		write(STDOUT_FILENO, "sort done\n", 10);
 		write(STDOUT_FILENO, END, ft_strlen(END));
 	}
-	printf("nil_rank = %d\n",nil_a->rank);
-	printf("first_rank = %d\n",nil_a->next->rank);
-	// print_stacks(nil_a, nil_b);
+	printf("nil_rank = %d\n", nil_a->rank);
+	printf("first_rank = %d\n", nil_a->next->rank);
 	ft_free(nil_a);
 	free(nil_b);
-	// system("leaks a.out");
+	// system("leaks pushswap");
 	return (0);
 }

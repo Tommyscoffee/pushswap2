@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 13:41:04 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 14:27:53 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_bi_list {
 	int					*array;
 	int					pivot;//クイックソートする基準（stack_sizeの中央値）
 	int					status;
+	int					size_now;
 }		t_bi_list;
 
 

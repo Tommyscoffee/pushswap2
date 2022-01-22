@@ -109,7 +109,6 @@ int	arg_6(t_bi_list *nil_a, t_bi_list *nil_b)
 		p = nil_a->next;
 		i++;
 	}
-	printf("arg_3の前\n");
 	arg_3(nil_a);
 	arg_3_b(nil_b);
 	while (nil_a->next->rank != 1)
@@ -167,8 +166,6 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 		{
 			printf("argc = %d\n", argc);
 			arg_3_to_6(argc, nil_a, nil_b);
-			// pb(nil_a,nil_b);
-			// rra(nil_a);
 		}
 	}
 	else

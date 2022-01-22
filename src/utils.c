@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 22:17:15 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/17 17:15:58 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/22 16:02:47 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	ft_free(t_bi_list *nil)
 	t_bi_list	*p;
 	t_bi_list	*tmp;
 
-	if (!nil->info)
-		free(nil->info);
+	// if (!nil->info)
+	// 	free(nil->info);
 	p = nil->next;
 	while (p != nil)
 	{
@@ -40,6 +40,7 @@ void	ft_free(t_bi_list *nil)
 		free(p);
 		p = tmp;
 	}
+	// free(nil->info);
 	free(nil);
 	return ;
 }
