@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_func.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 16:02:33 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 22:42:07 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,11 @@ void	init_nil(t_bi_list *nil)
 	nil->pivot = 0;
 	nil->stack_size = 0;
 	nil->status = 0;
+	nil->size_now = 0;
 	return ;
 }
 
-void	asort(size_t *a, int idx)
+void	asort(long *a, int idx)
 {
 	int	i;
 	int	j;
@@ -50,7 +51,7 @@ void	asort(size_t *a, int idx)
 	return ;
 }
 
-int	init_rank(t_bi_list *nil, size_t *sorted)
+int	init_rank(t_bi_list *nil, long *sorted)
 {
 	t_bi_list	*p;
 	size_t		i;
@@ -79,8 +80,8 @@ int	init_rank(t_bi_list *nil, size_t *sorted)
 int	init_array(t_bi_list *nil_a)
 {
 	t_bi_list	*p;
-	size_t		array[nil_a->stack_size];
-	size_t		i;
+	long		array[nil_a->stack_size];
+	long		i;
 
 	i = 0;
 	p = nil_a->next;
@@ -95,7 +96,7 @@ int	init_array(t_bi_list *nil_a)
 	i = 0;
 	while (i < nil_a->stack_size)
 	{
-		printf("array = %zu\n", array[i]);
+		printf("array = %ld\n", array[i]);
 		i++;
 	}
 	return (0);
@@ -112,13 +113,7 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 	p = nil;
 	i = 1;
 	j = 1;
-	// nil->info = (t_info *)malloc(sizeof(t_info));//もういらない
-	// if (!nil->info)
-	// {
-	// 	printf("malloc error\n");
-	// 	exit(1);
-	// }
-	// nil->info->stack_size = argc;
+
 	while (i < argc)
 	{
 		check_alpha(argv[i]);

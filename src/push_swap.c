@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/22 16:15:16 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 18:16:38 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	main(int argc, char **argv)
 	init_nil(nil_a);
 	init_nil(nil_b);
 	nil_a->stack_size = argc - 1;
+	nil_a->size_now = nil_a->stack_size;
 	init_stack(argc, argv, nil_a);//スタックAに引数を入れていく
 	init_array(nil_a);
 	print_stacks(nil_a, nil_b);

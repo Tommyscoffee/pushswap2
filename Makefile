@@ -6,7 +6,7 @@
 #    By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 21:27:07 by akihito           #+#    #+#              #
-#    Updated: 2022/01/19 20:52:32 by atomizaw         ###   ########.fr        #
+#    Updated: 2022/01/22 18:09:18 by atomizaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = src/push_swap.c\
 		src/utils/util.c\
 		src/operation/operation2.c\
 		inits/init_func.c\
+		src/quick_sort/Qsort_utils.c\
 
 DEBUG_SRC = debug/debug.c
 

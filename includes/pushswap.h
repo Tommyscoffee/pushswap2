@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 14:27:53 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 22:33:17 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_bi_list {
 	int					size_now;
 }		t_bi_list;
 
-
+int		iswant(t_bi_list *nil_a, t_bi_list *nil_b);
 int		show_stack(t_bi_list *nil);
 int		push_half(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_3(t_bi_list *nil);

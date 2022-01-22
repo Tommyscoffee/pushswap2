@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 16:15:43 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 18:14:16 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ int	pb(t_bi_list *a, t_bi_list *b)
 	first_a->next = first_b;
 	first_b->prev = first_a;
 	first_a->prev = b;
+	printf("nil_a->size_now = %d\n", a->size_now);
+	printf("nil_b->size_now = %d\n", b->size_now);
 	print_stacks(a,b);
 	return (FALSE);
 }

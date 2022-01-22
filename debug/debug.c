@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:36:42 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 15:49:21 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 17:44:59 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,11 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 		size_t		space_len[2];//スペースの数を格納する配列
 		// 各行の要素の桁数を取得する
 		if (p_a != nil_a)
-			line_len[0] = get_digits(p_a->value);
+			line_len[0] = get_digits(p_a->rank);
 		else
 			line_len[0] = 0;
 		if (p_b != nil_b)
-			line_len[1] = get_digits(p_b->value);
+			line_len[1] = get_digits(p_b->rank);
 		else
 			line_len[1] = 0;
 		space_len[0] = max_digits[0] - line_len[0];
@@ -125,7 +125,7 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 		write(1, space[0], space_len[0]);
 		if (p_a != nil_a)
 		{
-			ft_putnbr_fd(p_a->value, 1);
+			ft_putnbr_fd(p_a->rank, 1);
 			// ft_putnbr_fd(p_a->rank, 1);
 			p_a = p_a->next;
 		}
@@ -133,7 +133,7 @@ int	print_stacks(t_bi_list *nil_a, t_bi_list *nil_b)
 		write(1, space[1], space_len[1]);
 		if (p_b != nil_b)
 		{
-			ft_putnbr_fd(p_b->value, 1);
+			ft_putnbr_fd(p_b->rank, 1);
 			// ft_putnbr_fd(p_b->rank, 1);
 			p_b = p_b->next;
 		}
