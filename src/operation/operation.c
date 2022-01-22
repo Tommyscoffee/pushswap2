@@ -175,7 +175,7 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 	{
 		printf("pivot = %d\n", nil_a->pivot);
 		push_half(nil_a, nil_b);
-		Qsort(nil_a, nil_b);
+		// Qsort(nil_a, nil_b);
 		print_stacks(nil_a, nil_b);
 	}
 	return (0);

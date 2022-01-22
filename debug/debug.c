@@ -6,11 +6,25 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:36:42 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/17 12:12:37 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/22 13:44:43 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pushswap.h"
+
+int	show_stack(t_bi_list *nil)
+{
+	t_bi_list	*p;
+
+	p = nil->next;
+	while (p != nil)
+	{
+		printf("%d (%d)\n",p->value, p->rank);
+		p = p->next;
+	}
+	return (0);
+}
+
 int	get_digits(int	nbr)
 {
 	long	nnbr;

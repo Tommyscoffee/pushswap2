@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   command_b.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/19 19:40:02 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/22 13:41:47 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	rb(t_bi_list *nil)
 	first->next = nil;
 	first->prev = bottom;
 	bottom->next = first;
+	show_stack(nil);
 	return (FALSE);
 }
 

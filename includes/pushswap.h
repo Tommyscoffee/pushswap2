@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/20 23:11:02 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/22 13:41:04 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# define YELLOW "\x1b[33m"
+# define YELLOW 	"\x1b[33m"
+# define RED		"\x1b[31m"
+# define GREEN		"\x1b[32m"
 # define END		"\x1b[m"
 # define STACK_A "stack[0]"
 # define STACK_B "stack[1]"
@@ -23,7 +25,6 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include <stdio.h>
-
 typedef struct s_info
 {
 	int	stack_size;
@@ -42,6 +43,9 @@ typedef struct s_bi_list {
 	int					status;
 }		t_bi_list;
 
+
+int		show_stack(t_bi_list *nil);
+int		push_half(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_3(t_bi_list *nil);
 int		sort_3_b_second(t_bi_list *nil_b);
 int	 	sort_3_b_first(t_bi_list *nil_b);
