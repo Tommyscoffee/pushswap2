@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/23 01:28:47 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/23 20:42:51 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,32 @@ int	is_b_want(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->next;
-	if (p->rank == 1)
+	if ((p->rank <= 3 && p->rank >= 1) && check_bottom_3(nil_b))
 	{
+		printf("bwantのノード\n");
 		rb(nil_b);
 		return (1);
 	}
 	return (0);
 
+}
+
+int	check_bottom_3(t_bi_list *nil)//スタックbに３以下の数字しかないのに、rbするのほ防ぐ
+{
+	t_bi_list	*p;
+	int			under_3_num;
+	int			i;
+
+	i = 0;
+	p = nil->prev;
+	under_3_num = 0;
+	while (i < 3)
+	{
+		if (p->rank <= 3)
+			under_3_num++;
+		i++;
+	}
+	if (under_3_num < nil->size_now)
+		return (1);
+	return (0);
 }

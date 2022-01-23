@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 14:21:55 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:19:38 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	sa(t_bi_list *a)
 	third->prev = first;
 	first->prev = second;
 	second->prev = a;
+	command_num++;
 	return (0);
 }
 
@@ -61,6 +62,7 @@ int	pa(t_bi_list *a, t_bi_list *b)
 	first_b->next = first_a;
 	first_a->prev = first_b;
 	first_b->prev = a;
+	command_num++;
 	print_stacks(a, b);
 	return (FALSE);
 }
@@ -85,6 +87,7 @@ int	ra(t_bi_list *nil)
 	first->next = nil;
 	first->prev = bottom;
 	bottom->next = first;
+	command_num++;
 	show_stack(nil);
 	return (FALSE);
 }
@@ -98,7 +101,7 @@ int	rra(t_bi_list *nil)
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
 	write(STDOUT_FILENO, RED, ft_strlen(RED));
-	write(STDOUT_FILENO, "__[raa]__\n", 10);
+	write(STDOUT_FILENO, "__[rra]__\n", 10);
 	write(STDOUT_FILENO, END, ft_strlen(END));
 	bottom = nil->prev;
 	first = nil->next;
@@ -110,5 +113,6 @@ int	rra(t_bi_list *nil)
 	nil->next = bottom;
 	bottom->next = first;
 	first->prev = bottom;
+	command_num++;
 	return (FALSE);
 }

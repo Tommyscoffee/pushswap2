@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 18:41:06 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:20:53 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,39 @@ int	push_half(t_bi_list *nil_a, t_bi_list *nil_b)
 	return (0);
 }
 
-int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)
+int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
 {
 	// Bの底にrank1~3があったら、pbして、スタックAでarg_3でソートしてraを３回して底に移動させる
 	t_bi_list	*p;
 	int			i;
+	int			nil_b_size;
 
+	nil_b_size = nil_b->size_now;
 	i = 0;
 	p = nil_b->prev;
-	while (p != nil_b || (p->rank <= 3 && p->rank >= 1))
+	// スタックbは最初のpushhalfでは必ず４個以上になる
+	while ((nil_b_size - nil_b->size_now) < 3)
 	{
-		printf("bottom_to_bottomのwhile内\n");
-		rb(nil_b);
-		pa(nil_a, nil_b);
+		printf("bottom while\n\n");
+		if (nil_b->next->rank >= 1 && nil_b->next->rank <= 3)
+		{
+			pa(nil_a, nil_b);
+		}
+		else
+		{
+			printf("p->rank = %d\n", p->rank);
+			printf("bottom_to_bottomのwhile内\n");
+			if (nil_b_size <= 6)//スタックBが
+				rb(nil_b);
+			else
+				rrb(nil_b);
+			pa(nil_a, nil_b);
+		}
 		nil_a->next->sorted = 1;//ソートが完了している者にはsorted = 1にする
 		p = nil_b->prev;
 		i++;
 	}
+	printf("何個paしたのか = %d\n", i);
 	// スタックAに移った後の処理
 	if (i == 1)
 	{
@@ -72,7 +88,7 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)
 	}
 	else if (i == 2)
 	{
-		if (nil_a->next->value > nil_a->prev->value)
+		if (nil_a->next->value < nil_a->prev->value)
 			sa(nil_a);
 		else
 			printf("bottom_to_bottomでスタックAの先頭２つがソートしなくてもそのままでおk\n");
@@ -99,19 +115,8 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	printf("==QUICKSORT==\n");
 	print_stacks(nil_a, nil_b);
 	p_b = nil_b->next;
-	// while (is_sorted(nil_a))
-	// while ()
-	// {
-	// 	i = 0;
 	printf("スタックbのそこのrank1をスタックaのそこに移動させる\n");
-	// while (i < 3)
-	// {
-		bottom_to_bottom(nil_a, nil_b);
-	// 	rrb(nil_b);
-	// 	pa(nil_a, nil_b);
-	// 	ra(nil_a);
-
-	// }
+	bottom_to_bottom(nil_a, nil_b);
 	while (i < nil_b->size_now)
 	{
 		printf("while\n");

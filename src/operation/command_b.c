@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 14:22:54 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 19:40:12 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	sb(t_bi_list *b)
 	third->prev = first;
 	first->prev = second;
 	second->prev = b;
+	command_num++;
 	return (0);
 }
 
@@ -62,6 +63,7 @@ int	pb(t_bi_list *a, t_bi_list *b)
 	first_a->prev = b;
 	// printf("nil_a->size_now = %d\n", a->size_now);
 	// printf("nil_b->size_now = %d\n", b->size_now);
+	command_num++;
 	print_stacks(a,b);
 	return (FALSE);
 }
@@ -86,6 +88,7 @@ int	rb(t_bi_list *nil)
 	first->next = nil;
 	first->prev = bottom;
 	bottom->next = first;
+	command_num++;
 	show_stack(nil);
 	return (FALSE);
 }
@@ -111,5 +114,6 @@ int	rrb(t_bi_list *nil)
 	nil->next = bottom;
 	bottom->next = first;
 	first->prev = bottom;
+	command_num++;
 	return (FALSE);
 }

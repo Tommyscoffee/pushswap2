@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 18:25:32 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 19:46:53 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include <stdio.h>
+
+int	command_num;
 typedef struct s_info
 {
 	int	stack_size;
@@ -46,6 +48,7 @@ typedef struct s_bi_list {
 }		t_bi_list;
 
 
+int		check_bottom_3(t_bi_list *nil);
 int		is_a_want(t_bi_list *nil_a, t_bi_list *nil_b);
 int		is_b_want(t_bi_list *nil_a, t_bi_list *nil_b);
 int		show_stack(t_bi_list *nil);

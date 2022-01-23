@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/22 18:16:38 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 19:52:27 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ int	main(int argc, char **argv)
 	t_bi_list	*nil_a;
 	t_bi_list	*nil_b;
 
+	command_num = 0;
 	printf("t_bi_list byte = %lu\n", sizeof(t_bi_list));
 	nil_a = (t_bi_list *)malloc(sizeof(t_bi_list));
 	nil_b = (t_bi_list *)malloc(sizeof(t_bi_list));
@@ -138,6 +139,11 @@ int	main(int argc, char **argv)
 	}
 	printf("nil_rank = %d\n", nil_a->rank);
 	printf("first_rank = %d\n", nil_a->next->rank);
+	write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
+	write(STDOUT_FILENO, "command_num =", 13);
+	write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
+	write(STDOUT_FILENO, END, ft_strlen(END));
+	printf("\n");
 	ft_free(nil_a);
 	free(nil_b);
 	// system("leaks pushswap");
