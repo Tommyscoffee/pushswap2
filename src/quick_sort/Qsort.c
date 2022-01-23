@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 22:36:10 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 13:07:10 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,10 @@ int	push_half(t_bi_list *nil_a, t_bi_list *nil_b)
 			pb(nil_a, nil_b);
 			printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);
 			p->status = nil_a->pivot;
+			if (is_b_want(nil_a, nil_b))
+			{
+				printf("==is_b_want==\n");
+			}
 		}
 		if (!(nil_a->next->rank <= nil_a->pivot))
 			ra(nil_a);
@@ -66,11 +70,16 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("while\n");
 		if (p_b->rank >= nil_b->pivot)
 		{
-			if (iswant(nil_a, nil_b))
+			if (is_a_want(nil_a, nil_b))
 			{
+				pa(nil_a, nil_b);
+				ra(nil_a);
 				p_b = nil_b->next;
 			}
-			pa(nil_a, nil_b);
+			else
+			{
+				pa(nil_a, nil_b);
+			}
 		}
 		p_b = nil_b->next;
 		i++;
