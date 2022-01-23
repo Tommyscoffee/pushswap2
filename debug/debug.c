@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 18:36:42 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 17:44:59 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:16:36 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	show_stack(t_bi_list *nil)
 	p = nil->next;
 	while (p != nil)
 	{
-		printf("%d (%d)\n", p->value, p->rank);
+		printf("%d\t(%d)\n", p->value, p->rank);
 		p = p->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 18:13:24 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:21:55 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	sa(t_bi_list *a)
 		write(1, "no\n", 3);
 		return (TRUE);
 	}
-	write(1, "[sa]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[sa]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	first = a->next;
 	second = a->next->next;
 	third = a->next->next->next;
@@ -45,7 +47,9 @@ int	pa(t_bi_list *a, t_bi_list *b)
 
 	if (b->next->value == -1)
 		return (TRUE);
-	write(1, "[pa]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[pa]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	a->size_now++;
 	b->size_now--;
 	first_a = a->next;
@@ -69,7 +73,9 @@ int	ra(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[ra]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[ra]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	first = nil->next;
 	second = nil->next->next;
 	bottom = nil->prev;
@@ -91,7 +97,9 @@ int	rra(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[rra]\n", 6);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[raa]__\n", 10);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	bottom = nil->prev;
 	first = nil->next;
 	second = nil->prev->prev;

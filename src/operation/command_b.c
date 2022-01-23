@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 18:14:16 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 14:22:54 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int	sb(t_bi_list *b)
 		write(1,"no\n",3);
 		return (TRUE);
 	}
-	write(1, "[sb]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[sb]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	first = b->next;
 	second = b->next->next;
 	third = b->next->next->next;
@@ -44,7 +46,9 @@ int	pb(t_bi_list *a, t_bi_list *b)
 
 	if (a->next->value == -1)
 		return (TRUE);
-	write(1, "[pb]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[pb]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	a->size_now--;
 	b->size_now++;
 	first_a = a->next;
@@ -56,8 +60,8 @@ int	pb(t_bi_list *a, t_bi_list *b)
 	first_a->next = first_b;
 	first_b->prev = first_a;
 	first_a->prev = b;
-	printf("nil_a->size_now = %d\n", a->size_now);
-	printf("nil_b->size_now = %d\n", b->size_now);
+	// printf("nil_a->size_now = %d\n", a->size_now);
+	// printf("nil_b->size_now = %d\n", b->size_now);
 	print_stacks(a,b);
 	return (FALSE);
 }
@@ -70,7 +74,9 @@ int	rb(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[rb]\n", 5);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[rb]__\n", 9);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	first = nil->next;
 	second = nil->next->next;
 	bottom = nil->prev;
@@ -92,7 +98,9 @@ int	rrb(t_bi_list *nil)
 
 	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
 		return (TRUE);
-	write(1, "[rrb]\n", 6);
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__[rrb]__\n", 10);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	bottom = nil->prev;
 	first = nil->next;
 	second = nil->prev->prev;
