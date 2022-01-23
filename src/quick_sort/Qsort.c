@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 21:20:53 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/23 21:56:56 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,47 @@ int	push_half(t_bi_list *nil_a, t_bi_list *nil_b)
 	return (0);
 }
 
+int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	int	bottom;
+	int	second;
+	int	third;
+
+	bottom = nil_b->prev->rank;
+	second = nil_b->prev->prev->rank;
+	third  = nil_b->prev->prev->prev->rank;
+
+	if (bottom < second && second < third)
+		return (1);//321
+	else if (bottom < second && second > third)
+		return ()//231 132
+	if (bottom < second)
+	{
+		return(bottom_order_first(nil_b));
+	}
+	else
+	{
+		return(bottom_order_second(nil_b));
+	}
+}
+
+int	set_b_top(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	t_bi_list	*p;
+	int			which_order;
+
+	which_order = bottom_order(nil_a, nil_b);
+	p = nil_b->prev;
+	if (p->rank <= 3)//最初のpushhalfだけはスタックAのそこがソートされていないから参照できない
+	{
+		if (is_123(nil_b))
+		{
+
+		}
+	}
+	if (p->rank )
+}
+
 int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
 {
 	// Bの底にrank1~3があったら、pbして、スタックAでarg_3でソートしてraを３回して底に移動させる
@@ -70,7 +111,8 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 		{
 			printf("p->rank = %d\n", p->rank);
 			printf("bottom_to_bottomのwhile内\n");
-			if (nil_b_size <= 6)//スタックBが
+			set_b_top(nil_a, nil_b);
+			if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
 				rb(nil_b);
 			else
 				rrb(nil_b);
