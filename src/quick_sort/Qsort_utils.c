@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 16:05:41 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 17:09:08 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ int	is_b_want(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->next;
-	if ((p->rank <= 3 && p->rank >= 1) && check_bottom_3(nil_b))
+	if ((p->rank <= 3 && p->rank >= 1) && check_bottom_3(nil_b))//bのそこに欲しいものだったらフラグをつけてあげる。
 	{
+		p->sorted = 1;
 		printf("bwantのノード\n");
 		rb(nil_b);
 		return (1);
@@ -53,13 +54,14 @@ int	check_bottom_3(t_bi_list *nil)//スタックbに３以下の数字しかな�
 	i = 0;
 	p = nil->prev;
 	under_3_num = 0;
-	while (i < 3)
+	while (i < 3 && p != nil)
 	{
 		if (p->rank <= 3)
 			under_3_num++;
 		i++;
+		p = p->prev;
 	}
-	if (under_3_num < nil->size_now)
+	if (under_3_num <= nil->size_now)//
 	{
 		printf("bwantなので移動させます\n");
 		return (1);

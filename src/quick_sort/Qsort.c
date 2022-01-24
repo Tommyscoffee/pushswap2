@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 15:56:14 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 17:27:15 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,25 @@ int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
 	{
 		return (bottom_order_second(nil_a, nil_b));
 	}
+	return (0);
 }
 
-// int	set_b_top(t_bi_list *nil_a, t_bi_list *nil_b)
-// {
-// 	t_bi_list	*p;
-	
-// 	bottom_order(nil_a, nil_b);//bの底にどの順で並んでいるかをチェック
-// 	p = nil_b->prev;
-		
-// }
+int	set_sorted(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	t_bi_list	*p;
+
+	p = nil_a->next;
+	while (p->sorted == 1)
+	{
+		if (p->sorted == 1)
+		{
+			p->sorted = 2;
+			ra(nil_a);
+		}
+		p = nil_a->next;
+	}
+	return (0);
+}
 
 int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
 {
@@ -86,22 +95,26 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 	while ((nil_b_size - nil_b->size_now) < 3)
 	{
 		printf("bottom while\n\n");
-		if (nil_b->next->rank >= 1 && nil_b->next->rank <= 3)
-		{
-			pa(nil_a, nil_b);
-		}
+		// if (nil_b->next->rank >= 1 && nil_b->next->rank <= 3)
+		// {
+		// 	pa(nil_a, nil_b);
+		// }
+		// else
+		// {
+			// if (nil_b_size <= 6)またbottom_orderの条件分岐を作り直すのはめんどくさいから、全てrrbで済ませる
+			// {
+				
+			// }
+		printf("p->rank = %d\n", p->rank);
+		printf("bottom_to_bottomのwhile内\n");
+		bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
+		set_sorted(nil_a, nil_b);
+		if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
+			rb(nil_b);
 		else
-		{
-			printf("p->rank = %d\n", p->rank);
-			printf("bottom_to_bottomのwhile内\n");
-			// set_b_top(nil_a, nil_b);
-			bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
-			if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
-				rb(nil_b);
-			else
-				rrb(nil_b);
-			pa(nil_a, nil_b);
-		}
+			rrb(nil_b);
+		pa(nil_a, nil_b);
+		// }
 		nil_a->next->sorted = 1;//ソートが完了している者にはsorted = 1にする
 		p = nil_b->prev;
 		i++;
