@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/22 22:42:07 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 20:47:22 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,17 +106,14 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 {
 	size_t		i;
 	size_t		j;
-	t_bi_list	*node;
-	t_bi_list	*p;
 	long		value;//これをsize_tにすると必ず「引数が範囲外」となる
 
-	p = nil;
 	i = 1;
 	j = 1;
 
 	while (i < argc)
 	{
-		check_alpha(argv[i]);
+		// check_alpha(argv[i]);
 		value = ft_atol(argv[i]);
 		if (value > 2147483647 || value < -2147483648)//引数がintの範囲
 		{
