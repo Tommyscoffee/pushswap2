@@ -176,6 +176,7 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 	{
 		push_half(nil_a, nil_b);
 		// printf("==pushhalf終了==\n");
+		bottom_to_bottom(nil_a, nil_b);//ここでpush_halfでスタックBの底に貯めたものをスタックAのそこに移動
 		Qsort(nil_a, nil_b);
 		printf("==最終出力==\n");
 		print_stacks(nil_a, nil_b);

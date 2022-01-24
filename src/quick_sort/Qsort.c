@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 21:37:49 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:58:20 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,14 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p_b;
 	size_t		i;
+	int			prev_pivot;
 
+	prev_pivot = nil_b->pivot;
 	i = 0;
 	nil_b->pivot = (nil_b->size_now) / 2;
 	if ((nil_b->size_now) % 2)
 		nil_b->pivot++;
+
 	// check_stack_a(nil_a, nil_b);
 	printf("==pushhalf開始==\n");
 	// push_half2(nil_a, nil_b);
@@ -97,8 +100,8 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	printf("==QUICKSORT==\n");
 	// print_stacks(nil_a, nil_b);
 	p_b = nil_b->next;
-	printf("スタックbのそこのrank1をスタックaのそこに移動させる\n");
-	bottom_to_bottom(nil_a, nil_b);
+	// printf("スタックbのそこのrank1をスタックaのそこに移動させる\n");
+	// bottom_to_bottom(nil_a, nil_b);
 	while (i < nil_b->size_now)
 	{
 		if (p_b->rank >= nil_b->pivot)
