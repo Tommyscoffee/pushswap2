@@ -124,6 +124,10 @@ int	arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("ok\n");
 		arg_3(nil_a);
 	}
+	else if (argc == 5)
+	{
+		arg_4(nil_a, nil_b);
+	}
 	else if (argc == 6)
 	{
 		printf("5個\n");

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 15:55:32 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 17:37:52 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_bi_list {
 	int					sorted;
 }		t_bi_list;
 
+int		arg_4(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_213(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_321(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_312(t_bi_list *nil_a, t_bi_list *nil_b);

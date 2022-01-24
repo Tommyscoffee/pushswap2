@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 17:27:15 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 18:05:50 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,11 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 			// }
 		printf("p->rank = %d\n", p->rank);
 		printf("bottom_to_bottomのwhile内\n");
+		if (nil_a->size_now == 4)
+		{
+			nil_a->next->sorted = 1;//スタックBが４つだったら、一番上はrank4だと決まっているから先にpaしてしまう。
+			pa(nil_a, nil_b);
+		}
 		bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
 		set_sorted(nil_a, nil_b);
 		if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
