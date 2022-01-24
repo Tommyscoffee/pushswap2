@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 21:56:56 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:12:34 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,23 +52,18 @@ int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	int	bottom;
 	int	second;
-	int	third;
+	int	first;
 
 	bottom = nil_b->prev->rank;
 	second = nil_b->prev->prev->rank;
-	third  = nil_b->prev->prev->prev->rank;
-
-	if (bottom < second && second < third)
-		return (1);//321
-	else if (bottom < second && second > third)
-		return ()//231 132
-	if (bottom < second)
+	first = nil_b->prev->prev->prev->rank;
+	if (first < second)//
 	{
-		return(bottom_order_first(nil_b));
+		return (bottom_order_first(nil_b));
 	}
 	else
 	{
-		return(bottom_order_second(nil_b));
+		return (bottom_order_second(nil_b));
 	}
 }
 
@@ -77,16 +72,10 @@ int	set_b_top(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 	int			which_order;
 
-	which_order = bottom_order(nil_a, nil_b);
+	which_order = bottom_order(nil_a, nil_b);//bの底にどの順で並んでいるかをチェック
 	p = nil_b->prev;
-	if (p->rank <= 3)//最初のpushhalfだけはスタックAのそこがソートされていないから参照できない
-	{
-		if (is_123(nil_b))
-		{
-
-		}
-	}
-	if (p->rank )
+	if (which_order == 1)
+		
 }
 
 int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら

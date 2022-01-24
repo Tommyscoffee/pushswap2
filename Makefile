@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+         #
+#    By: akihito <akihito@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 21:27:07 by akihito           #+#    #+#              #
-#    Updated: 2022/01/22 18:09:18 by atomizaw         ###   ########.fr        #
+#    Updated: 2022/01/24 13:21:27 by akihito          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC = src/push_swap.c\
 		src/operation/operation2.c\
 		inits/init_func.c\
 		src/quick_sort/Qsort_utils.c\
+		src/quick_sort/Qsort_utils2.c\
 
 DEBUG_SRC = debug/debug.c
 
