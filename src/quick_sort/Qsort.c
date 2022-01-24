@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 14:12:34 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 15:56:14 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,27 @@ int	push_half(t_bi_list *nil_a, t_bi_list *nil_b)
 
 int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	int	bottom;
-	int	second;
-	int	first;
+	t_bi_list	*p;
 
-	bottom = nil_b->prev->rank;
-	second = nil_b->prev->prev->rank;
-	first = nil_b->prev->prev->prev->rank;
-	if (first < second)//
+	p = nil_b->prev;
+	if (p->prev->prev->rank < p->prev->rank)//
 	{
-		return (bottom_order_first(nil_b));
+		return (bottom_order_first(nil_a, nil_b));
 	}
 	else
 	{
-		return (bottom_order_second(nil_b));
+		return (bottom_order_second(nil_a, nil_b));
 	}
 }
 
-int	set_b_top(t_bi_list *nil_a, t_bi_list *nil_b)
-{
-	t_bi_list	*p;
-	int			which_order;
-
-	which_order = bottom_order(nil_a, nil_b);//bの底にどの順で並んでいるかをチェック
-	p = nil_b->prev;
-	if (which_order == 1)
+// int	set_b_top(t_bi_list *nil_a, t_bi_list *nil_b)
+// {
+// 	t_bi_list	*p;
+	
+// 	bottom_order(nil_a, nil_b);//bの底にどの順で並んでいるかをチェック
+// 	p = nil_b->prev;
 		
-}
+// }
 
 int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
 {
@@ -100,7 +94,8 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 		{
 			printf("p->rank = %d\n", p->rank);
 			printf("bottom_to_bottomのwhile内\n");
-			set_b_top(nil_a, nil_b);
+			// set_b_top(nil_a, nil_b);
+			bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
 			if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
 				rb(nil_b);
 			else
@@ -167,6 +162,5 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		p_b = nil_b->next;
 		i++;
 	}
-	// }
 	return (0);
 }

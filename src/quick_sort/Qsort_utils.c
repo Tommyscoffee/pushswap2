@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/23 20:42:51 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 16:05:41 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,14 @@ int	check_bottom_3(t_bi_list *nil)//スタックbに３以下の数字しかな�
 		i++;
 	}
 	if (under_3_num < nil->size_now)
+	{
+		printf("bwantなので移動させます\n");
 		return (1);
+	}
+	else
+	{
+		printf("under_3_num = %d\n", under_3_num);
+		printf("nil->size_now = %d\n", nil->size_now);
+	}
 	return (0);
 }

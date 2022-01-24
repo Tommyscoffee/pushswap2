@@ -6,52 +6,61 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 21:58:06 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 14:15:02 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 15:46:24 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	bottom_order_first(t_bi_list *nil_b)
+int	bottom_order_first(t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	int	bottom;
-	int	second;
-	int	first;
+	t_bi_list	*p;
 
-	bottom = nil_b->prev->rank;
-	second = nil_b->prev->prev->rank;
-	first = nil_b->prev->prev->prev->rank;
-	if (second > bottom)
-		return (1);
-	else if (first < bottom)
-		return (2);
-	else if (second > bottom)
-		return (3);
+	p = nil_b->prev;
+	if (p->prev->rank < p->rank)
+	{//123
+		sort_bottom_123(nil_a, nil_b);
+		return (0);
+	}
+	else if (p->prev->prev->rank < p->rank)
+	{//132
+		sort_bottom_132(nil_a, nil_b);
+		return (0);
+	}
+	else if (p->prev->rank > p->rank)
+	{//231
+		sort_bottom_231(nil_a, nil_b);
+		return (0);
+	}
 	printf("bottom_order_firstでエラーーーー\n");
 	exit(1);
 }
 
-int	bottom_order_second(t_bi_list *nil_b)
+int	bottom_order_second(t_bi_list *nil_a, t_bi_list *nil_b)
 {
-	int	bottom;
-	int	second;
-	int	first;
+	t_bi_list	*p;
 
-	bottom = nil_b->prev->rank;
-	second = nil_b->prev->prev->rank;
-	first = nil_b->prev->prev->prev->rank;
-	if (first < second && second < bottom)
+	p = nil_b->prev;
+	// if (p->prev->prev->rank > p->prev->rank
+	// 	&& p->prev->rank < p->rank)
+	// {
+	if (p->prev->prev->rank < p->rank)
 	{
-		if (first < bottom)
-			return (4);
-		else if (first < bottom)
-			return (5);
+		sort_bottom_213(nil_a, nil_b);
+		return (0);//213
+	}
+	else if (p->prev->prev->rank > p->rank
+		&& p->prev->rank < p->rank)
+	{//312
+		sort_bottom_312(nil_a, nil_b);
 		return (0);
 	}
-	if (first > bottom)
-		return (6);
-	else if (first < bottom)
-		return (7);
+	// }
+	else if (p->rank > p->prev->prev->rank)
+	{
+		sort_bottom_321(nil_a, nil_b);
+		return (0);
+	}
 	printf("bottom_order_firstでエラーーーー\n");
 	exit(1);
 }
