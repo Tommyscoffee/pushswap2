@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 18:05:50 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 19:37:16 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 			// }
 		printf("p->rank = %d\n", p->rank);
 		printf("bottom_to_bottomのwhile内\n");
-		if (nil_a->size_now == 4)
+		if (nil_b->size_now == 4)
 		{
-			nil_a->next->sorted = 1;//スタックBが４つだったら、一番上はrank4だと決まっているから先にpaしてしまう。
+			nil_b->next->sorted = 1;//スタックBが４つだったら、一番上はrank4だと決まっているから先にpaしてしまう。
 			pa(nil_a, nil_b);
 		}
 		bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
@@ -146,7 +146,6 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 	return (0);
 }
 
-
 int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p_b;
@@ -156,6 +155,9 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	nil_b->pivot = (nil_b->size_now) / 2;
 	if ((nil_b->size_now) % 2)
 		nil_b->pivot++;
+	printf("==pushhalf開始==\n");
+	push_half(nil_a, nil_b);
+	printf("==pushhalf終了==\n");
 	printf("==QUICKSORT==\n");
 	print_stacks(nil_a, nil_b);
 	p_b = nil_b->next;
@@ -163,7 +165,6 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	bottom_to_bottom(nil_a, nil_b);
 	while (i < nil_b->size_now)
 	{
-		printf("while\n");
 		if (p_b->rank >= nil_b->pivot)
 		{
 			if (is_a_want(nil_a, nil_b))
@@ -179,6 +180,11 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		}
 		p_b = nil_b->next;
 		i++;
+	}
+	if (is_sorted(nil_a))
+	{
+		printf("再帰入ってます\n");
+		Qsort(nil_a, nil_b);
 	}
 	return (0);
 }

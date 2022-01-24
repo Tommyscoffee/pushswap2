@@ -174,8 +174,8 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 	}
 	else
 	{
-		push_half(nil_a, nil_b);
-		printf("==pushhalf終了==\n");
+		// push_half(nil_a, nil_b);
+		// printf("==pushhalf終了==\n");
 		Qsort(nil_a, nil_b);
 		printf("==最終出力==\n");
 		print_stacks(nil_a, nil_b);
