@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 21:04:21 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/26 21:34:42 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,13 @@ int	main(int argc, char **argv)
 	}
 	printf("nil_rank = %d\n", nil_a->rank);
 	printf("first_rank = %d\n", nil_a->next->rank);
-	write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
-	write(STDOUT_FILENO, "command_num =", 13);
-	write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
-	write(STDOUT_FILENO, END, ft_strlen(END));
-	printf("\n");
+	// write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
+	// write(STDOUT_FILENO, "command_num =", 13);
+	// write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
+	// write(STDOUT_FILENO, END, ft_strlen(END));
+	// printf("\n");
 	ft_free(nil_a);
-	free(nil_b);
-	system("leaks pushswap");
+	ft_free(nil_b);
+	// system("leaks pushswap");s
 	return (0);
 }

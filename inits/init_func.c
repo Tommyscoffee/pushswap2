@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 20:47:22 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:28:59 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 	size_t		i;
 	size_t		j;
 	long		value;//これをsize_tにすると必ず「引数が範囲外」となる
-
+	nil->sorted_rank = 0;
 	i = 1;
 	j = 1;
 

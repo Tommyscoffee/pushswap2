@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 17:09:08 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:50:18 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_b_want(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->next;
-	if ((p->rank <= 3 && p->rank >= 1) && check_bottom_3(nil_b))//bのそこに欲しいものだったらフラグをつけてあげる。
+	if ((p->rank - nil_a->sorted_rank <= 3 && p->rank - nil_a->sorted_rank >= 1) && check_bottom_3(nil_b))//bのそこに欲しいものだったらフラグをつけてあげる。
 	{
 		p->sorted = 1;
 		printf("bwantのノード\n");

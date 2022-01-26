@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   operation2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 20:47:30 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 15:57:00 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/26 22:15:54 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	sort_3_a_second(t_bi_list *nil_a)
 	t_bi_list	*p;
 
 	p = nil_a->next;
-	// if (p->rank > p->next->rank
-	// 	&& p->next->rank < p->next->next->rank)
-	// {//1 > 2 && 2 < 3
 	if (p->rank < p->next->next->rank)
 		sa(nil_a);//213
 	else if (p->rank > p->next->next->rank
@@ -45,9 +42,6 @@ int	sort_3_a_second(t_bi_list *nil_a)
 		ra(nil_a);//312
 		return (0);
 	}
-	// }
-	// else if (p->rank < p->next->next->rank)
-	// 	sa(nil_a);
 	else if (p->rank > p->next->next->rank)
 	{//321
 		sa(nil_a);
@@ -97,7 +91,7 @@ int	sort_3_b_second(t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->next;
-	if (p->rank < p->next->rank && p->next->rank > p->next->next->rank)
+	if (p->next->rank > p->next->next->rank)
 	{//1 > 2 && 2 < 3
 		if (p->rank > p->next->next->rank)
 			sb(nil_b);

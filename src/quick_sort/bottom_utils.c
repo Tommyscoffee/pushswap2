@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Qsort_utils2.c                                     :+:      :+:    :+:   */
+/*   bottom_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 21:58:06 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 20:28:50 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/26 21:36:31 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
+
+int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	t_bi_list	*p;
+
+	p = nil_b->prev;
+	if (p->prev->prev->rank < p->prev->rank)//
+	{
+		return (bottom_order_first(nil_a, nil_b));
+	}
+	else
+	{
+		return (bottom_order_second(nil_a, nil_b));
+	}
+	return (0);
+}
 
 int	bottom_order_first(t_bi_list *nil_a, t_bi_list *nil_b)
 {

@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 20:41:59 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/26 22:39:34 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,16 @@ typedef struct s_bi_list {
 	int					status;
 	int					size_now;
 	int					sorted;
+	int 				sorted_rank;//スタックAのそこにソートされているランクを格納
+	int					want;
 }		t_bi_list;
 
+int		bottom_order(t_bi_list *nil_a, t_bi_list *nil_b);
+int		sort_top_3_a_first(t_bi_list *nil_a, t_bi_list *nil_b);
+int		sort_top_3_a_second(t_bi_list *nil_a, t_bi_list *nil_b);
+int		sort_top_3_a(t_bi_list *nil_a, t_bi_list *nil_b);
+int		check_rest_a(t_bi_list *nil_a, t_bi_list *nil_b);
+int		bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b);
 int		push_half2(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_4(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_213(t_bi_list *nil_a, t_bi_list *nil_b);

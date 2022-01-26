@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 20:46:28 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/22 16:18:20 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/26 21:35:44 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,11 @@ int	is_sorted(t_bi_list *nil)
 	printf("nil->size_now = %d\n", nil->size_now);
 	if (nil->size_now != nil->stack_size)
 		return (1);
+	write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
+	write(STDOUT_FILENO, "command_num =", 13);
+	write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
+	write(STDOUT_FILENO, END, ft_strlen(END));
+	printf("\n");
+	exit(1);
 	return (0);
 }
