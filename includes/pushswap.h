@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/24 17:37:52 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/24 20:41:59 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,6 @@
 # include <stdio.h>
 
 int	command_num;
-typedef struct s_info
-{
-	int	stack_size;
-}		t_info;
 
 typedef struct s_bi_list {
 	int					value;
@@ -38,7 +34,7 @@ typedef struct s_bi_list {
 	struct s_bi_list	*prev;
 	int					rank;
 	int					stack_size;
-	t_info				*info;
+	// t_info				*info;
 	int 				which;
 	int					*array;
 	int					pivot;//クイックソートする基準（stack_sizeの中央値）
@@ -47,6 +43,7 @@ typedef struct s_bi_list {
 	int					sorted;
 }		t_bi_list;
 
+int		push_half2(t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_4(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_213(t_bi_list *nil_a, t_bi_list *nil_b);
 void	sort_bottom_321(t_bi_list *nil_a, t_bi_list *nil_b);

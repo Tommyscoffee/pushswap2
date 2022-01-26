@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort_utils2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 21:58:06 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/24 15:46:24 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/24 20:28:50 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@ int	bottom_order_first(t_bi_list *nil_a, t_bi_list *nil_b)
 		sort_bottom_231(nil_a, nil_b);
 		return (0);
 	}
-	printf("bottom_order_firstでエラーーーー\n");
-	exit(1);
+	else
+	{
+		return (0);
+	}
 }
 
 int	bottom_order_second(t_bi_list *nil_a, t_bi_list *nil_b)
@@ -41,9 +43,6 @@ int	bottom_order_second(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->prev;
-	// if (p->prev->prev->rank > p->prev->rank
-	// 	&& p->prev->rank < p->rank)
-	// {
 	if (p->prev->prev->rank < p->rank)
 	{
 		sort_bottom_213(nil_a, nil_b);
@@ -55,12 +54,11 @@ int	bottom_order_second(t_bi_list *nil_a, t_bi_list *nil_b)
 		sort_bottom_312(nil_a, nil_b);
 		return (0);
 	}
-	// }
 	else if (p->rank > p->prev->prev->rank)
 	{
 		sort_bottom_321(nil_a, nil_b);
 		return (0);
 	}
-	printf("bottom_order_firstでエラーーーー\n");
-	exit(1);
+	else
+		return (0);
 }
