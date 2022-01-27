@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/27 09:56:23 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/27 09:58:48 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	}
 	printf("=============Qsort_b終了===========\n");
 	//Bをソートして３個以下になったら
+	setsortedの後無駄にraしてごちゃごちゃになってる
 	bottom_order(nil_a, nil_b);
 	set_sorted_a(nil_a, nil_b);
 }
