@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/27 01:39:26 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/27 22:57:18 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_bi_list {
 	int					want;
 }		t_bi_list;
 
+void	sort_set_operation(t_bi_list *nil_a);
 int		set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b);
 int		push_half_b(t_bi_list *nil_a, t_bi_list *nil_b);
 int		Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b);

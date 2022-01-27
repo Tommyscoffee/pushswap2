@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_half.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/27 09:42:20 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/27 22:17:30 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,6 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	// while (i < nil_a->stack_size && nil_a->size_now >= ((nil_a->stack_size) / 2))
 	while (nil_a->size_now >= nil_a->pivot)
 	{//set_sortedしても必要個数pbする。
-		// set_sorted_a(nil_a, nil_b);
 		printf("・stack_size = %d\n", nil_a->stack_size);
 		printf("・size_now = %d\n", nil_a->size_now);
 		printf("・pivot = %d\n", nil_a->pivot);
@@ -165,10 +164,11 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);
 		}
 		if (nil_a->next->rank > nil_a->pivot
-			&& nil_a->size_now > ((nil_a->stack_size) / 2))
+			&& nil_a->size_now > nil_a->pivot)
 			ra(nil_a);
-		p = nil_a->next;//これをやらないとpはスタックbにいくので,
+		p = nil_a->next;
 	}
+	printf("------pushhalf終了---------\n");
 	return (0);
 }
 

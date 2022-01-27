@@ -182,7 +182,7 @@ int	operation_stack(int argc, t_bi_list *nil_a, t_bi_list *nil_b)
 		// check_rest_a(nil_a, nil_b);
 		// push_half2(nil_a, nil_b);
 		Qsort(nil_a, nil_b);
-		check_rest_a(nil_a, nil_b);
+		// check_rest_a(nil_a, nil_b);
 		printf("==最終出力==\n");
 		print_stacks(nil_a, nil_b);
 	}

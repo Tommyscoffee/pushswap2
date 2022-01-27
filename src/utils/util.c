@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 20:46:28 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/26 21:35:44 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/27 23:25:00 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	is_sorted(t_bi_list *nil)
 
 	i = 0;
 	p = nil->next;//
-	while (p->next != nil)
+	while (p->next != nil && nil_a->size_now == nil_a->stack_size)
 	{
 		if (p->rank > p->next->rank)
 		{//未ソートだったら1を返す
-			return (1);
+			return (0);
 		}
 		p = p->next;
 		i++;
@@ -37,5 +37,5 @@ int	is_sorted(t_bi_list *nil)
 	write(STDOUT_FILENO, END, ft_strlen(END));
 	printf("\n");
 	exit(1);
-	return (0);
+	return (1);
 }

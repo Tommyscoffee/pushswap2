@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/26 19:50:18 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/27 22:57:10 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	is_a_want(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("awantのノード\n");
 		p_b->status = nil_b->pivot;
 		pa(nil_a, nil_b);
+		sort_set_operation(nil_a);
 		return (1);
 	}
 	return (0);
