@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_half.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/26 22:57:21 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/27 09:42:20 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	check_rest_a(t_bi_list *nil_a, t_bi_list *nil_b)
 }
 
 int	push_half2(t_bi_list *nil_a, t_bi_list *nil_b)
-{
+{//まだ一回もpbされてない塊の半分をpbする関数
 	t_bi_list	*p;
 	size_t		i;
 
@@ -117,10 +117,13 @@ int	push_half2(t_bi_list *nil_a, t_bi_list *nil_b)
 	{
 		if (p->rank <= nil_a->pivot)
 		{
-			p->status += nil_a->pivot;//pbしたノードにどのpivotでpbされたかを記録しておく
+			p->status = 0;//pbするときはstatusを初期化
 			pb(nil_a, nil_b);
 			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);``
-			p->status = nil_a->pivot;
+			if (is_a_want(nil_a, nil_b))
+			{
+				
+			}
 			if (is_b_want(nil_a, nil_b))//ここでスタックBで底にあるべきものをそこに移動させている
 			{
 				printf("==is_b_want==\n");
@@ -143,30 +146,56 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	i = 0;
 	p = nil_a->next;
 	nil_a->pivot = ((nil_a->size_now) / 2) + nil_a->sorted_rank;
-	if ((nil_a->size_now - nil_a) % 2)
+	if ((nil_a->size_now - nil_a->sorted_rank) % 2)
 		nil_a->pivot++;
 	printf("===pushhalfに入りました====\n");
 	printf("・stack_size = %d\n", nil_a->stack_size);
 	printf("・pivot = %d\n", nil_a->pivot);
 	// while (i < nil_a->stack_size && nil_a->size_now >= ((nil_a->stack_size) / 2))
-	while (nil_a->size_now > ((nil_a->stack_size) / 2))
-	{
-		if (p->rank <= nil_a->pivot)
+	while (nil_a->size_now >= nil_a->pivot)
+	{//set_sortedしても必要個数pbする。
+		// set_sorted_a(nil_a, nil_b);
+		printf("・stack_size = %d\n", nil_a->stack_size);
+		printf("・size_now = %d\n", nil_a->size_now);
+		printf("・pivot = %d\n", nil_a->pivot);
+		printf("sorted_rank = %d\n", nil_a->sorted_rank);
+		if (p->rank <= nil_a->pivot)//pivotを含んだものがスタックBに渡されている
 		{
-			p->status += nil_a->pivot;//pbしたノードにどのpivotでpbされたかを記録しておく
 			pb(nil_a, nil_b);
-			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);``
-			p->status = nil_a->pivot;
-			if (is_b_want(nil_a, nil_b))//ここでスタックBで底にあるべきものをそこに移動させている
-			{
-				printf("==is_b_want==\n");
-			}
+			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);
 		}
 		if (nil_a->next->rank > nil_a->pivot
 			&& nil_a->size_now > ((nil_a->stack_size) / 2))
 			ra(nil_a);
 		p = nil_a->next;//これをやらないとpはスタックbにいくので,
-		i++;
 	}
 	return (0);
+}
+
+int	push_half_b(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	t_bi_list	*p;
+	size_t		i;
+	int			start_size;
+
+	start_size = nil_b->size_now;
+	i = 0;
+	p = nil_b->next;
+	printf("===push_half_bに入りました====\n");
+	printf("・start_size = %d\n", nil_b->size_now);
+	printf("・pivot = %d\n", nil_b->pivot);
+	// while (i < nil_a->stack_size && nil_a->size_now >= ((nil_a->stack_size) / 2))
+	while (nil_a->size_now > (start_size / 2) + nil_a->sorted_rank)
+	{//set_sortedしても必要個数pbする。
+		set_sorted_a(nil_a, nil_b);
+		if (p->rank <= nil_a->pivot)//pivotを含んだものがスタックBに渡されている
+		{
+			pb(nil_a, nil_b);
+			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);
+		}
+		if (nil_a->next->rank > nil_a->pivot
+			&& nil_a->size_now > ((nil_a->stack_size) / 2))
+			ra(nil_a);
+		p = nil_a->next;//これをやらないとpはスタックbにいくので,
+	}
 }

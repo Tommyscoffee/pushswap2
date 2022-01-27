@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/26 23:05:38 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/27 09:56:23 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	set_sorted(t_bi_list *nil_a, t_bi_list *nil_b)
+int	set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p;
 
 	p = nil_a->next;
-	while (p->sorted == 1)
+	while (nil_a->next->rank == nil_a->sorted_rank + 1)
 	{
-		if (p->sorted == 1)
-		{
-			p->sorted = 2;
-			nil_a->sorted_rank = p->rank;
-			ra(nil_a);
-		}
+		// if (p->sorted == 1)
+		// {
+		// 	p->sorted = 2;
+		nil_a->sorted_rank = p->rank;
+		ra(nil_a);
+		// }
 		p = nil_a->next;
 	}
 	return (0);
@@ -52,7 +52,7 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 		pa(nil_a, nil_b);
 	}
 	bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
-	set_sorted(nil_a, nil_b);
+	set_sorted_a(nil_a, nil_b);
 	if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
 		rb(nil_b);
 	else
@@ -66,6 +66,35 @@ int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイ
 	return (0);
 }
 
+int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	t_bi_list	*p;
+	int			start_size;
+
+	start_size = nil_b->size_now;
+	p = nil_b->next;
+	nil_b->pivot = ((nil_a->pivot) / 2) + nil_a->sorted_rank;//このpivotを含んだrankが来る
+	if ((nil_b->size_now) % 2)
+		nil_b->pivot++;
+	while (nil_b->size_now > 3)
+	{
+		while  ((start_size - nil_b->size_now) < nil_b->pivot)
+		{
+			if (p->rank > nil_b->pivot)
+			{
+				pa(nil_a, nil_b);
+			}
+			rb(nil_b);
+			p = nil_b->next;
+		}
+	}
+	printf("=============Qsort_b終了===========\n");
+	//Bをソートして３個以下になったら
+	bottom_order(nil_a, nil_b);
+	set_sorted_a(nil_a, nil_b);
+}
+
+
 int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p_b;
@@ -77,18 +106,17 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	nil_b->pivot = ((nil_b->size_now) / 2) + nil_a->sorted_rank;
 	if ((nil_b->size_now) % 2)
 		nil_b->pivot++;
-	check_rest_a(nil_a, nil_b);
-	printf("==pushhalf開始==\n");
-	// push_half2(nil_a, nil_b);
-	printf("==pushhalf終了==\n");
+	// check_rest_a(nil_a, nil_b);
 	printf("==QUICKSORT==\n");
-	sleep(300);
+	// sleep(300);
 	p_b = nil_b->next;
-	// printf("スタックbのそこのrank1をスタックaのそこに移動させる\n");
-	// bottom_to_bottom(nil_a, nil_b);
-	while (nil_a->want != nil_a->stack_size)
+	// while (nil_a->want != nil_a->stack_size)
+	while (i < 3)
 	{
+		printf("Qsort-while\n");
 		push_half_a(nil_a, nil_b);
+		printf("=====push_half_a終了=====\n");
+		Qsort_b(nil_a, nil_b);
 		if (p_b->rank >= nil_b->pivot)
 		{
 			if (is_a_want(nil_a, nil_b))
