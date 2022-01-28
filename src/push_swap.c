@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/28 09:51:42 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/29 01:28:19 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,11 +140,6 @@ int	main(int argc, char **argv)
 	}
 	printf("nil_rank = %d\n", nil_a->rank);
 	printf("first_rank = %d\n", nil_a->next->rank);
-	// write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
-	// write(STDOUT_FILENO, "command_num =", 13);
-	// write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
-	// write(STDOUT_FILENO, END, ft_strlen(END));
-	// printf("\n");
 	ft_free(nil_a);
 	ft_free(nil_b);
 	// system("leaks pushswap");s

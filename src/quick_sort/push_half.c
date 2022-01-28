@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_half.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/27 22:17:30 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/29 02:29:26 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	check_rest_a(t_bi_list *nil_a, t_bi_list *nil_b)
 		// bottom_order(nil_a, nil_b);
 		// set_sorted(nil_a, nil_b);
 	}
-	if (is_sorted(nil_a))
+	if (!is_sorted(nil_a))
 	{
 		printf("だめ\n");
 	}
@@ -156,15 +156,12 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	{//set_sortedしても必要個数pbする。
 		printf("・stack_size = %d\n", nil_a->stack_size);
 		printf("・size_now = %d\n", nil_a->size_now);
+		printf("・p->rank = %d\n", p->rank);
 		printf("・pivot = %d\n", nil_a->pivot);
 		printf("sorted_rank = %d\n", nil_a->sorted_rank);
 		if (p->rank <= nil_a->pivot)//pivotを含んだものがスタックBに渡されている
-		{
 			pb(nil_a, nil_b);
-			// printf("pushhalfでnil_a->size_now = %d\n", nil_a->size_now);
-		}
-		if (nil_a->next->rank > nil_a->pivot
-			&& nil_a->size_now > nil_a->pivot)
+		if (nil_a->next->rank > nil_a->pivot)
 			ra(nil_a);
 		p = nil_a->next;
 	}
