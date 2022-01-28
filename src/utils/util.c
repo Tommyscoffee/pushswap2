@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 20:46:28 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/27 23:25:00 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:48:36 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pushswap.h"
 
-int	is_sorted(t_bi_list *nil)
+int	is_sorted(t_bi_list *nil_a)
 {
 	t_bi_list	*p;
 	int			i;
 
 	i = 0;
-	p = nil->next;//
-	while (p->next != nil && nil_a->size_now == nil_a->stack_size)
+	p = nil_a->next;//
+	while (p->next != nil_a && nil_a->size_now == nil_a->stack_size)
 	{
 		if (p->rank > p->next->rank)
 		{//未ソートだったら1を返す
@@ -28,14 +28,23 @@ int	is_sorted(t_bi_list *nil)
 		p = p->next;
 		i++;
 	}
-	printf("nil->size_now = %d\n", nil->size_now);
-	if (nil->size_now != nil->stack_size)
-		return (1);
+	printf("nil->size_now = %d\n", nil_a->size_now);
+	if (nil_a->size_now != nil_a->stack_size)
+		return (0);
+	exit(1);
+	return (1);
+}
+
+void	ft_sortdone(void)
+{
+	write(STDOUT_FILENO, YELLOW, ft_strlen(YELLOW));
+	write(STDOUT_FILENO, "sort done\n", 10);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
 	write(STDOUT_FILENO, "command_num =", 13);
 	write(STDOUT_FILENO, ft_itoa(command_num), ft_strlen(ft_itoa(command_num)));
 	write(STDOUT_FILENO, END, ft_strlen(END));
 	printf("\n");
 	exit(1);
-	return (1);
+	return ;
 }

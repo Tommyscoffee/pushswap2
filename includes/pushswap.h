@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/27 22:57:18 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:46:35 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_bi_list {
 	int					want;
 }		t_bi_list;
 
+void	ft_sortdone(void);
 void	sort_set_operation(t_bi_list *nil_a);
 int		set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b);
 int		push_half_b(t_bi_list *nil_a, t_bi_list *nil_b);
@@ -83,7 +84,6 @@ int		arg_3_to_6(int argc, t_bi_list *nil_a, t_bi_list *nil_b);
 int		arg_2(t_bi_list *nil_b);
 int		is_sorted(t_bi_list *nil);
 int		arg_2_b(t_bi_list *nil_b);
-int		is_sorted(t_bi_list *nil);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_free(t_bi_list *nil);
 int		ft_isspace(const char *str);

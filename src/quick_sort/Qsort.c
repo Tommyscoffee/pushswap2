@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/27 23:25:27 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/28 09:47:45 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ int	set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b)
 		sort_set_operation(nil_a);
 		p = nil_a->next;
 	}
-	if (is_sorted)
+	if (!is_sorted(nil_a))
 	{
-
+		ft_sortdone();
 	}
 	return (0);
 }
@@ -85,7 +85,7 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	nil_b->pivot = ((nil_a->pivot) / 2) + nil_a->sorted_rank;//このpivotを含んだrankが来る
 	if ((nil_b->size_now) % 2)
 		nil_b->pivot++;
-	printf("pivot = %d\n",nil_b->pivot);
+	printf("pivot = %d\n", nil_b->pivot);
 	while (nil_b->size_now > 3)
 	{
 		while ((start_size - nil_b->size_now) < nil_b->pivot)
