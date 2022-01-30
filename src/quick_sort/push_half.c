@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/30 17:52:19 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/30 23:03:40 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,18 +146,16 @@ int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 
 	i = 0;
 	p = nil_a->next;
-	nil_a->pivot = ((nil_a->stack_size + nil_a->sorted_rank + 1) / 2);
-
-	after_a_size = nil_a->pivot;
-	// if ((nil_a->size_now - nil_a->sorted_rank) % 2)
-	// 	nil_a->pivot++;
-	printf("===pushhalf_a_2に入りました====\n");
+	nil_a->pivot = make_pivot_a(nil_a, nil_b);
+	after_a_size = make_after_size_a(nil_a, nil_b);
+	printf("===pushhalf_aに入りました====\n");
 	printf("・stack_size = %d\n", nil_a->stack_size);
 	printf("・pivot = %d\n", nil_a->pivot);
 	// while (i < nil_a->stack_size && nil_a->size_now >= ((nil_a->stack_size) / 2))
 	while (nil_a->size_now > after_a_size)
 	{//奇数個のとき、pbする数が一個少ない　しかし、>=にすると偶数個のとき無限ループする
 		printf("・stack_size = %d\n", nil_a->stack_size);
+		printf("・after_a_size = %d\n", after_a_size);
 		printf("・size_now = %d\n", nil_a->size_now);
 		printf("・p->rank = %d\n", p->rank);
 		printf("・pivot = %d\n", nil_a->pivot);
@@ -182,7 +180,7 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	p = nil_a->next;
 	nil_a->pivot = ((nil_a->size_now) / 2) + nil_a->sorted_rank;
 	after_a_size = nil_a->pivot;
-	if ((nil_a->size_now - nil_a->sorted_rank) % 2)
+	if ((nil_a->size_now) % 2)
 		nil_a->pivot++;
 	printf("===pushhalf_aに入りました====\n");
 	printf("・stack_size = %d\n", nil_a->stack_size);

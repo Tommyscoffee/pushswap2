@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/30 22:01:06 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/30 23:00:07 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,33 +89,6 @@ int	set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b)
 // 	printf("何個paしたのか = %d\n", i);
 // 	return (0);
 // }
-int	make_pivot(t_bi_list *nil_a, t_bi_list *nil_b)
-{
-	int	pivot;
-//pivot = ps->awant + (size - 1) / 2;//syamashiさんのpivotの決め方
-	printf("awant = %d\n\n", nil_a->awant);
-	pivot = nil_a->awant + (nil_b->size_now) / 2;//なぜ−１するかはわかっていない
-	//このpivotの決め方だと、スタックBが４以下の場合、pivotが１になってしまい、３つpaした後に１だけ戻るので奇数の時は++する方がいい
-	if ((nil_b->size_now) % 2)
-	{
-		pivot++;
-	}
-	// if (nil_b->size_now % 2)
-	// {//まだスタックBから半分ソートされた時のpivotは設定してない
-		
-	// }
-	return (pivot);
-}
-
-int	make_after_size(t_bi_list *nil_a, t_bi_list *nil_b)
-{
-	int	after_size;
-
-	after_size = nil_a->pivot / 2;
-	if (nil_a->pivot % 2)
-		after_size++;
-	return (after_size);
-}
 
 int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 {
@@ -130,10 +103,10 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	printf("=======Qsort_b=========\n");
 	while (nil_b->size_now > 3)
 	{
-		nil_b->pivot = make_pivot(nil_a, nil_b);
+		nil_b->pivot = make_pivot_b(nil_a, nil_b);
 		start_size = nil_b->size_now;//push_half_aした直後のスタックBの要素数
 		p = nil_b->next;
-		after_size = make_after_size(nil_a, nil_b);
+		after_size = make_after_size_b(nil_a, nil_b);
 		printf("pivot = %d\n", nil_b->pivot);
 		// while ((start_size - nil_b->size_now) < (nil_b->pivot))
 		while (nil_b->size_now > after_size)
@@ -201,19 +174,23 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	if ((nil_b->size_now) % 2)
 		nil_b->pivot++;
 	printf("==QUICKSORT==\n");
-	push_half_a(nil_a, nil_b);
 	p_b = nil_b->next;
 	// while (nil_a->sorted_rank != nil_a->stack_size)
-	while (i < 3)
+	while (i < 5)
 	{
 		printf("nil_a->sorted_rank = %d\n", nil_a->sorted_rank);
 		printf("nil_a->stack_size = %d\n", nil_a->stack_size);
 		// push_half_a_2(nil_a, nil_b);//完了
 		printf("======Qsort-while=======\n");
-		Qsort_b(nil_a, nil_b);
-		printf("\n\n\n\n\n\n");
-		pb_same_status(nil_a, nil_b);
-		// p_b = nil_b->next;
+		if (nil_a->size_now != nil_a->stack_size)
+		{
+			Qsort_b(nil_a, nil_b);
+			printf("\n\n\n\n\n\n");
+			pb_same_status(nil_a, nil_b);
+			// p_b = nil_b->next;
+		}
+		else
+			push_half_a_2(nil_a, nil_b);
 		i++;
 	}
 	return (0);
