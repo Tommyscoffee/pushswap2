@@ -6,7 +6,7 @@
 /*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/28 09:46:35 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/30 14:55:47 by akihito          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ typedef struct s_bi_list {
 	int					sorted;
 	int 				sorted_rank;//スタックAのそこにソートされているランクを格納
 	int					want;
+	int					awant;
 }		t_bi_list;
 
+int		push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b);
+int		pb_same_status(t_bi_list *nil_a, t_bi_list *nil_b);
 void	ft_sortdone(void);
 void	sort_set_operation(t_bi_list *nil_a);
 int		set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b);
