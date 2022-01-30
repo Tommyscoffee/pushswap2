@@ -113,7 +113,6 @@ int	arg_6(t_bi_list *nil_a, t_bi_list *nil_b)
 	arg_3_b(nil_b);
 	while (nil_a->next->rank != 1)
 		pa(nil_a, nil_b);
-
 	return (0);
 }
 

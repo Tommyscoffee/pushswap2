@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/30 21:16:47 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/30 22:01:06 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,9 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	int			start_size;
 	int			b_max;//スタックBの中の最大値これと、sorted_rankでpivotを決める
 	int			after_size;
+	int			i;
 
+	i =0 ;
 	b_max = nil_a->pivot;//スタックAが欲しいもの - 1
 	printf("=======Qsort_b=========\n");
 	while (nil_b->size_now > 3)
@@ -136,6 +138,8 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 		// while ((start_size - nil_b->size_now) < (nil_b->pivot))
 		while (nil_b->size_now > after_size)
 		{
+			if (i > 6)
+				exit(1);
 			printf("awant = %d\n", nil_a->awant);
 			printf("after_size = %d\n", after_size);
 			printf("b_max = %d\n", b_max);
@@ -149,6 +153,7 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 			else
 				rb(nil_b);
 			p = nil_b->next;
+			i++;
 		}
 	}
 	printf("nil_a->next->status = %d\n", nil_a->next->status);
@@ -166,16 +171,17 @@ int	pb_same_status(t_bi_list *nil_a, t_bi_list *nil_b)
 
 	p = nil_a->next;
 	std_status = p->status;
-	// if (std_status == 0)
-	// {
-	// 	printf("たまたまソートれているので、次のpush_half_aにいって\n");
-	// 	return (0);
-	// }
-	
+	nil_a->awant = nil_a->sorted_rank + 1;//一回pbに戻す時にawantを初期化して、また代入しなければいけない
+	printf("+_+_+_+_+_pb_same_status+_+_+_+_+_+\n");
+	if (std_status == 0)
+	{
+		printf("たまたまソートれているので、次のpush_half_aにいって\n");
+		return (0);
+	}
 	printf("std_status = %d\n", std_status);
 	while (p->status == std_status)
 	{
-		printf("p->status = %d\n",p->status);
+		printf("p->status = %d\n", p->status);
 		p->status = 0;
 		pb(nil_a, nil_b);
 		p = nil_a->next;
@@ -200,11 +206,14 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	// while (nil_a->sorted_rank != nil_a->stack_size)
 	while (i < 3)
 	{
+		printf("nil_a->sorted_rank = %d\n", nil_a->sorted_rank);
+		printf("nil_a->stack_size = %d\n", nil_a->stack_size);
 		// push_half_a_2(nil_a, nil_b);//完了
 		printf("======Qsort-while=======\n");
 		Qsort_b(nil_a, nil_b);
 		printf("\n\n\n\n\n\n");
-		// pb_same_status(nil_a, nil_b);		p_b = nil_b->next;
+		pb_same_status(nil_a, nil_b);
+		// p_b = nil_b->next;
 		i++;
 	}
 	return (0);
