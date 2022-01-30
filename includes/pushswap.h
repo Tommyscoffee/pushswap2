@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/30 14:55:47 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/30 20:09:27 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,11 @@ typedef struct s_bi_list {
 	int					size_now;
 	int					sorted;
 	int 				sorted_rank;//スタックAのそこにソートされているランクを格納
-	int					want;
 	int					awant;
 }		t_bi_list;
 
+int		make_after_size(t_bi_list *nil_a, t_bi_list *nil_b);
+int		make_pivot(t_bi_list *nil_a, t_bi_list *nil_b);
 int		push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b);
 int		pb_same_status(t_bi_list *nil_a, t_bi_list *nil_b);
 void	ft_sortdone(void);

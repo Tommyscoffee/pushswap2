@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_half.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/29 15:33:13 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/30 17:52:19 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,17 +147,6 @@ int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 	i = 0;
 	p = nil_a->next;
 	nil_a->pivot = ((nil_a->stack_size + nil_a->sorted_rank + 1) / 2);
-	// 10
-	// 8
-	// 7
-	// 9
-	
-	// 1
-	// 2
-	// 3
-	// 4
-	// 5
-	// 6
 
 	after_a_size = nil_a->pivot;
 	// if ((nil_a->size_now - nil_a->sorted_rank) % 2)

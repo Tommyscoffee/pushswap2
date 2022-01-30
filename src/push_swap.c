@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/29 01:28:19 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/30 19:42:13 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	main(int argc, char **argv)
 	init_array(nil_a);
 	print_stacks(nil_a, nil_b);
 	operation_stack(argc, nil_a, nil_b);
-	ft_sortdone();
+	// ft_sortdone();
 	if (is_sorted(nil_a))
 	{
 		write(STDOUT_FILENO, YELLOW, ft_strlen(YELLOW));

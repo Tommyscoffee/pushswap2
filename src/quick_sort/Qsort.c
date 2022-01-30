@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Qsort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akihito <akihito@student.42.fr>            +#+  +:+       +#+        */
+/*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/30 14:49:22 by akihito          ###   ########.fr       */
+/*   Updated: 2022/01/30 21:16:47 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	sort_set_operation(t_bi_list *nil_a)
 	p = nil_a->next;
 	p->sorted = 2;
 	nil_a->sorted_rank = p->rank;
+	nil_a->awant = p->rank + 1;
 	ra(nil_a);
 	return ;
 }
@@ -29,6 +30,9 @@ void	unsort_set_operation(t_bi_list *nil_a, t_bi_list *nil_b)
 
 	p = nil_b->next;
 	p->status = nil_b->pivot;
+	if(nil_b->next->rank >= nil_a->awant)//スタックBをソートする時
+		nil_a->awant = nil_b->next->rank;
+	//ここの条件式は未完成,awantは+1をしているのに>=でいいのか？
 	printf("\np->status = %d\n\n", p->status);
 	pa(nil_a, nil_b);
 	return ;
@@ -88,15 +92,29 @@ int	set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b)
 int	make_pivot(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	int	pivot;
-	int prev_pivot;
-	int	b_max;
 //pivot = ps->awant + (size - 1) / 2;//syamashiさんのpivotの決め方
-	b_max = nil_a->pivot;
-	prev_pivot = nil_b->pivot;
-	if (nil_b->size_now % 2)
-	{//まだスタックBから半分ソートされた時のpivotは設定してない
-		pivot = (b_max - nil_a->sorted_rank)
+	printf("awant = %d\n\n", nil_a->awant);
+	pivot = nil_a->awant + (nil_b->size_now) / 2;//なぜ−１するかはわかっていない
+	//このpivotの決め方だと、スタックBが４以下の場合、pivotが１になってしまい、３つpaした後に１だけ戻るので奇数の時は++する方がいい
+	if ((nil_b->size_now) % 2)
+	{
+		pivot++;
 	}
+	// if (nil_b->size_now % 2)
+	// {//まだスタックBから半分ソートされた時のpivotは設定してない
+		
+	// }
+	return (pivot);
+}
+
+int	make_after_size(t_bi_list *nil_a, t_bi_list *nil_b)
+{
+	int	after_size;
+
+	after_size = nil_a->pivot / 2;
+	if (nil_a->pivot % 2)
+		after_size++;
+	return (after_size);
 }
 
 int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
@@ -106,36 +124,21 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	int			b_max;//スタックBの中の最大値これと、sorted_rankでpivotを決める
 	int			after_size;
 
-	b_max = nil_a->pivot;//スタックBの最大値
+	b_max = nil_a->pivot;//スタックAが欲しいもの - 1
 	printf("=======Qsort_b=========\n");
 	while (nil_b->size_now > 3)
 	{
-
-		make_pivot_b(nil_a, nil_b);
+		nil_b->pivot = make_pivot(nil_a, nil_b);
 		start_size = nil_b->size_now;//push_half_aした直後のスタックBの要素数
 		p = nil_b->next;
-		after_size = (b_max - nil_a->sorted_rank) / 2;
-		// if ((b_max - nil_a->sorted_rank) % 2)
-		// 	after_size++;
-		if ((nil_b->size_now) % 2)
-			nil_b->pivot++;
-		nil_b->pivot = ((b_max) / 2) + nil_a->sorted_rank;//このpivotを含んだrankが来る
-		if ((b_max) )
-		1
-		4
-		3
-		6
-		2
-		5
-		9
-		8
-		10
-		7
+		after_size = make_after_size(nil_a, nil_b);
 		printf("pivot = %d\n", nil_b->pivot);
 		// while ((start_size - nil_b->size_now) < (nil_b->pivot))
-		printf("after_size = %d\n", after_size);
-		while (nil_b->size_now != after_size)
+		while (nil_b->size_now > after_size)
 		{
+			printf("awant = %d\n", nil_a->awant);
+			printf("after_size = %d\n", after_size);
+			printf("b_max = %d\n", b_max);
 			printf("Q_sort_b_while\n\n");
 			printf("pivot = %d\n", nil_b->pivot);
 			if (p->rank > nil_b->pivot)
