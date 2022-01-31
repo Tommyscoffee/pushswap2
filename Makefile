@@ -6,7 +6,7 @@
 #    By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 21:27:07 by akihito           #+#    #+#              #
-#    Updated: 2022/01/30 22:59:42 by atomizaw         ###   ########.fr        #
+#    Updated: 2022/01/31 14:00:35 by atomizaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = src/push_swap.c\
 		src/operation/operation3.c\
 		src/quick_sort/Qsort.c\
 		src/utils/util.c\
+		src/utils/estimate.c\
 		inits/init_func.c\
 		src/quick_sort/Qsort_utils.c\
 		src/quick_sort/bottom_utils.c\

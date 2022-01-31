@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 22:45:24 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/30 23:23:07 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 13:16:14 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	make_pivot_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	int	pivot;
 //pivot = ps->awant + (size - 1) / 2;//syamashiさんのpivotの決め方
 	printf("awant = %d\n\n", nil_a->awant);
-	pivot = (((nil_a->size_now) / 2) + nil_a->sorted_rank);
+	pivot = (((nil_a->stack_size + nil_a->sorted_rank) / 2));
 	printf("sorted_rank = %d\n", nil_a->sorted_rank);
 	printf("nil_a->stack_size = %d\n", nil_a->stack_size / 2);
 	printf("pivot = %d\n", pivot);
-	if ((nil_a->stack_size) % 2)
-		nil_a->pivot++;
+	if ((nil_a->stack_size + nil_a->sorted_rank) % 2)
+		pivot++;
 	return (pivot);
 }
 

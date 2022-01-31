@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/30 23:00:07 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:05:05 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,17 +97,22 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	int			b_max;//スタックBの中の最大値これと、sorted_rankでpivotを決める
 	int			after_size;
 	int			i;
+	int			j;
 
+	j = 0;
 	i =0 ;
 	b_max = nil_a->pivot;//スタックAが欲しいもの - 1
 	printf("=======Qsort_b=========\n");
-	while (nil_b->size_now > 3)
+	// while (nil_b->size_now > 3)
+	while (j < 3)
 	{
 		nil_b->pivot = make_pivot_b(nil_a, nil_b);
 		start_size = nil_b->size_now;//push_half_aした直後のスタックBの要素数
 		p = nil_b->next;
 		after_size = make_after_size_b(nil_a, nil_b);
 		printf("pivot = %d\n", nil_b->pivot);
+		printf("after_size = %d\n", after_size);
+
 		// while ((start_size - nil_b->size_now) < (nil_b->pivot))
 		while (nil_b->size_now > after_size)
 		{
@@ -128,9 +133,16 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 			p = nil_b->next;
 			i++;
 		}
+		j++;
 	}
 	printf("nil_a->next->status = %d\n", nil_a->next->status);
 	bottom_order(nil_a, nil_b);
+	// if (nil_b->size_now == 1)
+	// 	pa(nil_a, nil_b);
+	// else if(nil_b->size_now == 2)
+	// {
+	// 	arg_2(nil_b);
+	// }
 	set_sorted_a(nil_a, nil_b);
 	printf("+++++++Qsort_b終了********\n");
 	printf("*****nil_a->sorted_rank = %d\n",nil_a->sorted_rank);
@@ -175,8 +187,7 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		nil_b->pivot++;
 	printf("==QUICKSORT==\n");
 	p_b = nil_b->next;
-	// while (nil_a->sorted_rank != nil_a->stack_size)
-	while (i < 5)
+	while (nil_a->sorted_rank != nil_a->stack_size)
 	{
 		printf("nil_a->sorted_rank = %d\n", nil_a->sorted_rank);
 		printf("nil_a->stack_size = %d\n", nil_a->stack_size);

@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/30 23:03:40 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:09:56 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,6 +138,26 @@ int	check_rest_a(t_bi_list *nil_a, t_bi_list *nil_b)
 // 	return (0);
 // }
 
+void	reset_stack_a(t_bi_list *nil_a)
+{
+	t_bi_list	*p;
+	// int			sorted_from_nil_a;
+
+	// sorted_from_nil_a = 0;
+	p = nil_a->prev;
+
+	// estimate_stack_a_sorted(nil_a);
+	// if (sorted_from_nil_a < )
+	if (nil_a->sorted_rank > 0)
+	{
+		while (p->rank != nil_a->sorted_rank)
+		{
+			rra(nil_a);
+			p = nil_a->prev;
+		}
+	}
+}
+
 int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p;
@@ -148,25 +168,63 @@ int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 	p = nil_a->next;
 	nil_a->pivot = make_pivot_a(nil_a, nil_b);
 	after_a_size = make_after_size_a(nil_a, nil_b);
-	printf("===pushhalf_aに入りました====\n");
+	printf("===pushhalf_a_2に入りました====\n");
 	printf("・stack_size = %d\n", nil_a->stack_size);
+	printf("・sorted_rank= %d\n", nil_a->sorted_rank);
 	printf("・pivot = %d\n", nil_a->pivot);
+	if ((nil_a->stack_size - nil_a->sorted_rank) == 1)
+	{
+		printf("(nil_a->stack_size - nil_a->sorted_rank) == 1\n");
+		sort_set_operation(nil_a);
+		return (0);
+	}
+	if ((nil_a->stack_size - nil_a->sorted_rank) == 2)
+	{
+		printf("(nil_a->stack_size - nil_a->sorted_rank) == 2\n");
+		if (p->rank > p->next->rank)
+			sa(nil_a);
+		set_sorted_a(nil_a, nil_b);
+		return (0);
+	}
+	// else if ((nil_a->stack_size - nil_a->sorted_rank) == 3)
+	// {//スタックAの上に３つ残っていたらd
+	// 	printf("(nil_a->stack_size - nil_a->sorted_rank) == 3\n");
+	// 	printf("sort_top_3\n\n");
+	// 	print_stacks(nil_a, nil_b);
+	// 	sort_top_3_a(nil_a, nil_b);
+	// 	return (0);
+	// }
 	// while (i < nil_a->stack_size && nil_a->size_now >= ((nil_a->stack_size) / 2))
-	while (nil_a->size_now > after_a_size)
+	// while (nil_a->size_now > after_a_size)
+	while (i < 7)
 	{//奇数個のとき、pbする数が一個少ない　しかし、>=にすると偶数個のとき無限ループする
+		// if (is_a_want(nil_a, nil_b))
+		// 	set_sorted_a(nil_a, nil_b);
+		printf("whileに入りました　条件式を確認ください\n");
 		printf("・stack_size = %d\n", nil_a->stack_size);
 		printf("・after_a_size = %d\n", after_a_size);
 		printf("・size_now = %d\n", nil_a->size_now);
 		printf("・p->rank = %d\n", p->rank);
 		printf("・pivot = %d\n", nil_a->pivot);
 		printf("sorted_rank = %d\n", nil_a->sorted_rank);
-		if (p->rank <= nil_a->pivot)//pivotを含んだものがスタックBに渡されている
+		if (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank)//pivotを含んだものがスタックBに渡されている
 			pb(nil_a, nil_b);
 		if (nil_a->next->rank > nil_a->pivot && nil_a->size_now > after_a_size)
 			ra(nil_a);
 		p = nil_a->next;
+		if (is_sorted(nil_a))
+		{
+			write(STDOUT_FILENO, YELLOW, ft_strlen(YELLOW));
+			write(STDOUT_FILENO, "sort done\n", 10);
+			write(STDOUT_FILENO, END, ft_strlen(END));
+			exit(0);
+		}
+		i++;
 	}
+	reset_stack_a(nil_a);
+	print_stacks(nil_a, nil_b);
 	printf("------pushhalf終了---------\n");
+	exit(0);
 	return (0);
 }
 
