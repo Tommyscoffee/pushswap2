@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 22:34:21 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/31 14:00:18 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:04:50 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ typedef struct s_bi_list {
 	int					sorted;
 	int 				sorted_rank;//スタックAのそこにソートされているランクを格納
 	int					awant;
+	int					bmax;
 }		t_bi_list;
 
+int		after_push_b(t_bi_list *nil_a, t_bi_list *nil_b);
 int		estimate_stack_a_sorted(t_bi_list *nil_a);
 int		make_after_size_a(t_bi_list *nil_a, t_bi_list *nil_b);
 int		make_after_size_b(t_bi_list *nil_a, t_bi_list *nil_b);

@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/31 18:14:46 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 23:36:07 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,4 +295,5 @@ int	push_half_b(t_bi_list *nil_a, t_bi_list *nil_b)
 			ra(nil_a);
 		p = nil_a->next;//これをやらないとpはスタックbにいくので,
 	}
+	return (0);
 }

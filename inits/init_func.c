@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/26 19:28:59 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 22:12:52 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	init_nil(t_bi_list *nil)
 	nil->stack_size = 0;
 	nil->status = 0;
 	nil->size_now = 0;
+	nil->awant = 1;
 	return ;
 }
 
