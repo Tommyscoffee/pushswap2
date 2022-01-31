@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 22:59:00 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/31 13:39:57 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:57:37 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	make_after_size_a(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	int	after_size;
 
-	after_size = nil_a->pivot - 1;
+	after_size = nil_a->pivot;
+	if ((nil_a->stack_size + nil_a->sorted_rank) % 2)
+		after_size--;
 	return (after_size);
 }

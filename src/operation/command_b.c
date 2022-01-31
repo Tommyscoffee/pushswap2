@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 14:41:19 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/23 19:40:12 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 16:33:26 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,11 @@ int	pb(t_bi_list *a, t_bi_list *b)
 	t_bi_list	*first_b;
 	t_bi_list	*second_a;
 
-	if (a->next->value == -1)
+	if (a->next == a)
+	{
+		printf("pbエラーー\n");
 		return (TRUE);
+	}
 	write(STDOUT_FILENO, RED, ft_strlen(RED));
 	write(STDOUT_FILENO, "__[pb]__\n", 9);
 	write(STDOUT_FILENO, END, ft_strlen(END));
@@ -74,7 +77,7 @@ int	rb(t_bi_list *nil)
 	t_bi_list	*second;
 	t_bi_list	*bottom;
 
-	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
+	if (nil->next->next == nil)//スタックが空か１つだったらエラー
 		return (TRUE);
 	write(STDOUT_FILENO, RED, ft_strlen(RED));
 	write(STDOUT_FILENO, "__[rb]__\n", 9);
@@ -99,7 +102,7 @@ int	rrb(t_bi_list *nil)
 	t_bi_list	*first;
 	t_bi_list	*second;
 
-	if (nil->next->next->value == -1)//スタックが空か１つだったらエラー
+	if (nil->next->next == nil)//スタックが空か１つだったらエラー
 		return (TRUE);
 	write(STDOUT_FILENO, RED, ft_strlen(RED));
 	write(STDOUT_FILENO, "__[rrb]__\n", 10);
