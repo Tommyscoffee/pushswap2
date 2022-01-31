@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/31 17:35:48 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 19:14:45 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,16 @@ void	sort_set_operation(t_bi_list *nil_a)
 void	unsort_set_operation(t_bi_list *nil_a, t_bi_list *nil_b)
 {
 	t_bi_list	*p;
+	int			tmp;
 
+	tmp = 0;
 	p = nil_b->next;
 	p->status = nil_b->pivot;
-	if(nil_b->next->rank >= nil_a->awant)//スタックBをソートする時
+	// if (nil_a->sorted_rank == 0)
+	// {
+	// 	tmp = nil_b->next->rank;
+	// }
+	if(nil_b->next->rank <= nil_a->awant)//スタックBをソートする時
 		nil_a->awant = nil_b->next->rank;
 	//ここの条件式は未完成,awantは+1をしているのに>=でいいのか？
 	printf("\np->status = %d\n\n", p->status);
@@ -103,7 +109,7 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	i =0 ;
 	b_max = nil_a->pivot;//スタックAが欲しいもの - 1
 	printf("=======Qsort_b=========\n");
-	// while (j < 3)
+	// while (j < 4)
 	while (nil_b->size_now > 3)
 	{
 		nil_b->pivot = make_pivot_b(nil_a, nil_b);
@@ -112,7 +118,7 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 		after_size = make_after_size_b(nil_a, nil_b);
 		printf("pivot = %d\n", nil_b->pivot);
 		printf("after_size = %d\n", after_size);
-
+		print_stacks(nil_a, nil_b);
 		// while ((start_size - nil_b->size_now) < (nil_b->pivot))
 		while (nil_b->size_now > after_size)
 		{
@@ -187,7 +193,7 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		nil_b->pivot++;
 	printf("==QUICKSORT==\n");
 	p_b = nil_b->next;
-	// while (i < 3)
+	// while (i < 4)
 	while (nil_a->sorted_rank != nil_a->stack_size)
 	{
 		printf("nil_a->sorted_rank = %d\n", nil_a->sorted_rank);

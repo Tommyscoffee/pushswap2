@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 13:00:36 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/31 16:34:16 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:25:05 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ int	pa(t_bi_list *a, t_bi_list *b)
 	t_bi_list	*second_b;
 
 	if (b->next == b)
+	{
+		printf("paエラー\n");
 		return (TRUE);
+	}
 	write(STDOUT_FILENO, RED, ft_strlen(RED));
 	write(STDOUT_FILENO, "__[pa]__\n", 9);
 	write(STDOUT_FILENO, END, ft_strlen(END));

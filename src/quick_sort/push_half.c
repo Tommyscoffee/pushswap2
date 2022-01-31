@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/31 16:58:34 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/01/31 18:14:46 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,9 @@ void	reset_stack_a(t_bi_list *nil_a)
 
 	// estimate_stack_a_sorted(nil_a);
 	// if (sorted_from_nil_a < )
+	write(STDOUT_FILENO, RED, ft_strlen(RED));
+	write(STDOUT_FILENO, "__reset_stack_a__\n", 18);
+	write(STDOUT_FILENO, END, ft_strlen(END));
 	if (nil_a->sorted_rank > 0)
 	{
 		while (p->rank != nil_a->sorted_rank)
@@ -205,8 +208,9 @@ int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("・stack_size = %d\n", nil_a->stack_size);
 		printf("・after_a_size = %d\n", after_a_size);
 		printf("・size_now = %d\n", nil_a->size_now);
+		printf("・nil_a->pivot = %d\n", nil_a->pivot);
+		printf("・nil_b->pivot = %d\n", nil_b->pivot);
 		printf("・p->rank = %d\n", p->rank);
-		printf("・pivot = %d\n", nil_a->pivot);
 		printf("sorted_rank = %d\n", nil_a->sorted_rank);
 		printf("%d\n", (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank));
 		if (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank)//pivotを含んだものがスタックBに渡されている
