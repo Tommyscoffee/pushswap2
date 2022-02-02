@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 19:48:46 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/31 23:36:07 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:49:48 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,8 +215,16 @@ int	push_half_a_2(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("%d\n", (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank));
 		if (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank)//pivotを含んだものがスタックBに渡されている
 		{
+			// set_sorted_a(nil_a, nil_b);
 			printf("%d\n", (p->rank <= nil_a->pivot && p->rank > nil_a->sorted_rank));
-			pb(nil_a, nil_b);
+			if (nil_a->next->sorted != 2)
+				pb(nil_a, nil_b);
+		}
+		if (is_b_want(nil_a, nil_b))
+		{
+			write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
+			write(STDOUT_FILENO, "is_b_want\n", 10);
+			write(STDOUT_FILENO, END, ft_strlen(END));
 		}
 		if (nil_a->next->rank > nil_a->pivot && nil_a->size_now > after_a_size)
 			ra(nil_a);
@@ -261,6 +269,12 @@ int	push_half_a(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("sorted_rank = %d\n", nil_a->sorted_rank);
 		if (p->rank <= nil_a->pivot)//pivotを含んだものがスタックBに渡されている
 			pb(nil_a, nil_b);
+		// if (is_b_want(nil_a, nil_b))
+		// {
+		// 	write(STDOUT_FILENO, GREEN, ft_strlen(GREEN));
+		// 	write(STDOUT_FILENO, "is_b_want\n", 10);
+		// 	write(STDOUT_FILENO, END, ft_strlen(END));
+		// }
 		if (nil_a->next->rank > nil_a->pivot && nil_a->size_now > after_a_size)
 			ra(nil_a);
 		p = nil_a->next;

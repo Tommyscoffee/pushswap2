@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/26 16:58:29 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/30 19:42:13 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:06:48 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,6 @@ int	main(int argc, char **argv)
 	printf("first_rank = %d\n", nil_a->next->rank);
 	ft_free(nil_a);
 	ft_free(nil_b);
-	// system("leaks pushswap");s
+	// system("leaks pushswap");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 22:54:22 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/02/02 17:23:29 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:01:37 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	after_push_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	// }
 	while (!until_b_sequence(nil_a, nil_b) && nil_a->next->sorted < 1) 
 	{
+		printf("until_b_sequence\n\n");
 		set_sorted_a(nil_a, nil_b);//最適化ここでnil_a->sorted_rankが変動する
 		if (nil_a->next->sorted != 2)//set_sorted_aでraした次が1である時に勝手にpbしてしまう。
 			pb(nil_a, nil_b);
@@ -78,3 +79,53 @@ int	until_b_sequence(t_bi_list *nil_a, t_bi_list *nil_b)
 		return (1);
 	return (0);
 }
+
+
+// int	until_b_sequence(t_bi_list *nil_a, t_bi_list *nil_b)
+// {
+// 	t_bi_list	*p;
+// 	int			target;
+// 	int			prev;
+// 	int			i;
+// 	int			array[nil_b->size_now];
+
+	
+// 	i = 0;
+// 	prev = 0;
+// 	p = nil_a->next;
+// 	if (nil_a->next->rank > nil_b->bmax)
+// 		nil_b->bmax = nil_a->next->rank;
+// 	target = nil_a->sorted_rank + 1;//連続かを見るカウント変数
+// 	printf("bmax = %d\n", nil_b->bmax);
+// 	printf("target = %d\n", target);
+// 	while (i < nil_b->size_now)
+// 	{
+// 		printf("while\n");
+// 		prev = target;
+// 		while (p != nil_a)//毎回スタックBを全部見る
+// 		{
+// 			printf("target = %d\n", target);
+// 			printf("p->rank = %d\n", p->rank);
+// 			if (target == p->rank)
+// 			{
+// 				target++;
+// 				break ;
+// 			}
+// 			else
+// 				p = p->next;
+// 		}
+// 		if (target == prev)
+// 		{
+// 			printf("連続ではありません\n");
+// 			return (0);
+// 		}
+// 		i++;
+// 	}
+// 	if (target == nil_b->bmax)
+// 	{
+// 		printf("連続です\n\n\n\n");
+// 		exit(0);
+// 		return (1);
+// 	}
+// 	return (1);
+// }
