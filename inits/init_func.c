@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/15 21:58:20 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/31 22:12:52 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:14:57 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,10 @@ int	init_rank(t_bi_list *nil, long *sorted)
 int	init_array(t_bi_list *nil_a)
 {
 	t_bi_list	*p;
-	long		array[nil_a->stack_size];
+	long		*array;
 	long		i;
 
+	array = (long *)malloc(sizeof(long) * nil_a->stack_size);
 	i = 0;
 	p = nil_a->next;
 	while (p != nil_a)
@@ -100,6 +101,7 @@ int	init_array(t_bi_list *nil_a)
 		printf("array = %ld\n", array[i]);
 		i++;
 	}
+	free(array);
 	return (0);
 }
 
@@ -114,7 +116,7 @@ int	init_stack(int argc, char **argv, t_bi_list *nil)
 
 	while (i < argc)
 	{
-		// check_alpha(argv[i]);
+		check_alpha(argv[i]);
 		value = ft_atol(argv[i]);
 		if (value > 2147483647 || value < -2147483648)//引数がintの範囲
 		{

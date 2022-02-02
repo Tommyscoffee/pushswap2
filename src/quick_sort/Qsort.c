@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/02/02 17:24:17 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 20:02:12 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,40 +60,40 @@ int	set_sorted_a(t_bi_list *nil_a, t_bi_list *nil_b)
 	return (0);
 }
 
-// int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
-// {
-// 	// Bの底にrank1~3があったら、pbして、スタックAでarg_3でソートしてraを３回して底に移動させる
-// 	t_bi_list	*p;
-// 	int			i;
-// 	int			nil_b_size;
+int	bottom_to_bottom(t_bi_list *nil_a, t_bi_list *nil_b)//スタックBのサイズが５個以下なら
+{
+	// Bの底にrank1~3があったら、pbして、スタックAでarg_3でソートしてraを３回して底に移動させる
+	t_bi_list	*p;
+	int			i;
+	int			nil_b_size;
 
-// 	nil_b_size = nil_b->size_now;
-// 	i = 0;
-// 	p = nil_b->prev;
-// 	// スタックbは最初のpushhalfでは必ず４個以上になる
-// 	// while ((nil_b_size - nil_b->size_now) < 3)
-// 	// {
-// 	printf("bottom while\n\n");
-// 	printf("p->rank = %d\n", p->rank);
-// 	printf("bottom_to_bottomのwhile内\n");
-// 	if (nil_b->size_now == 4)
-// 	{
-// 		nil_b->next->sorted = 1;//スタックBが４つだったら、一番上はrank4だと決まっているから先にpaしてしまう。
-// 		pa(nil_a, nil_b);
-// 	}
-// 	bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
-// 	set_sorted_a(nil_a, nil_b);
-// 	if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
-// 		rb(nil_b);
-// 	else
-// 		rrb(nil_b);
-// 	// pa(nil_a, nil_b);
-// 	nil_a->next->sorted = 1;//ソートが完了している者にはsorted = 1にする
-// 	p = nil_b->prev;
-// 	i++;
-// 	printf("何個paしたのか = %d\n", i);
-// 	return (0);
-// }
+	nil_b_size = nil_b->size_now;
+	i = 0;
+	p = nil_b->prev;
+	// スタックbは最初のpushhalfでは必ず４個以上になる
+	// while ((nil_b_size - nil_b->size_now) < 3)
+	// {
+	printf("bottom while\n\n");
+	printf("p->rank = %d\n", p->rank);
+	printf("bottom_to_bottomのwhile内\n");
+	if (nil_b->size_now == 4)
+	{
+		nil_b->next->sorted = 1;//スタックBが４つだったら、一番上はrank4だと決まっているから先にpaしてしまう。
+		pa(nil_a, nil_b);
+	}
+	bottom_order(nil_a, nil_b);//スタックBの底の順番に応じてpaする
+	set_sorted_a(nil_a, nil_b);
+	// if (nil_b_size <= 6)//スタックBが6以下だったらrbすれば最短で
+	// 	rb(nil_b);
+	// else
+	// 	rrb(nil_b);
+	// pa(nil_a, nil_b);
+	// nil_a->next->sorted = 1;//ソートが完了している者にはsorted = 1にする
+	// p = nil_b->prev;
+	// i++;
+	// printf("何個paしたのか = %d\n", i);
+	return (0);
+}
 
 int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 {
@@ -191,6 +191,7 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 	printf("==QUICKSORT==\n");
 	p_b = nil_b->next;
 	push_half_a_2(nil_a, nil_b);
+	// bottom_to_bottom(nil_a, nil_b);
 	while (nil_a->size_now != nil_a->stack_size)
 	{
 		printf("nil_a->sorted_rank = %d\n", nil_a->sorted_rank);
@@ -200,7 +201,7 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("\n\n\n\n\n\n");
 		pb_same_status(nil_a, nil_b);
 	}
-	while (!is_sorted(nil_a))
+	while (!is_sorted(nil_a))//ソートされるまで
 		after_half(nil_a, nil_b);
 	return (0);
 }

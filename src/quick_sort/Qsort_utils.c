@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/22 17:40:01 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/31 23:23:56 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 18:20:58 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_bottom_3(t_bi_list *nil)//スタックbに３以下の数字しかな�
 	t_bi_list	*p;
 	int			under_3_num;
 	int			i;
-	int			b_min;
+
 	i = 0;
 	p = nil->prev;
 	under_3_num = 0;
