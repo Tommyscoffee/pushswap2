@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/19 12:34:03 by akihito           #+#    #+#             */
-/*   Updated: 2022/01/31 23:49:31 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:24:17 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,6 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	i =0 ;
 	b_max = nil_a->pivot;//スタックAが欲しいもの - 1
 	printf("=======Qsort_b=========\n");
-	// while (j < 4)
 	while (nil_b->size_now > 3)
 	{
 		start_size = nil_b->size_now;//push_half_aした直後のスタックBの要素数
@@ -145,11 +144,11 @@ int	Qsort_b(t_bi_list *nil_a, t_bi_list *nil_b)
 	// 	pa(nil_a, nil_b);
 	// else if(nil_b->size_now == 2)
 	// {
-	// 	arg_2(nil_b);
+		// arg_2(nil_b);
 	// }
 	set_sorted_a(nil_a, nil_b);
 	printf("+++++++Qsort_b終了********\n");
-	printf("*****nil_a->sorted_rank = %d\n",nil_a->sorted_rank);
+	printf("*****nil_a->sorted_rank = %d\n", nil_a->sorted_rank);
 	return (0);
 }
 
@@ -201,6 +200,7 @@ int	Qsort(t_bi_list *nil_a, t_bi_list *nil_b)
 		printf("\n\n\n\n\n\n");
 		pb_same_status(nil_a, nil_b);
 	}
-	// after_half(nil_a, nil_b);
+	while (!is_sorted(nil_a))
+		after_half(nil_a, nil_b);
 	return (0);
 }

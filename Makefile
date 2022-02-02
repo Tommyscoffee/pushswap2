@@ -6,7 +6,7 @@
 #    By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 21:27:07 by akihito           #+#    #+#              #
-#    Updated: 2022/01/31 23:34:53 by atomizaw         ###   ########.fr        #
+#    Updated: 2022/02/02 14:50:12 by atomizaw         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC = src/push_swap.c\
 		src/quick_sort/Sort_top_3.c\
 		src/quick_sort/make_pivot.c\
 		src/quick_sort/make_after_size.c\
+		src/after_half/after_half.c\
 
 DEBUG_SRC = debug/debug.c
 
