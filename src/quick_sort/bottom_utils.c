@@ -6,7 +6,7 @@
 /*   By: atomizaw <atomizaw@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/23 21:58:06 by atomizaw          #+#    #+#             */
-/*   Updated: 2022/01/30 22:07:36 by atomizaw         ###   ########.fr       */
+/*   Updated: 2022/02/02 17:06:19 by atomizaw         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,16 @@ int	bottom_order(t_bi_list *nil_a, t_bi_list *nil_b)
 	t_bi_list	*p;
 
 	p = nil_b->prev;
-	if (p->prev->prev->rank < p->prev->rank)//
+	if (nil_b->size_now == 1)
+		pa(nil_a, nil_b);
+	else if (nil_b->size_now == 2)
+	{
+		if (nil_b->next->rank < nil_b->prev->rank)
+			sb(nil_b);
+		pa(nil_a, nil_b);
+		pa(nil_a, nil_b);
+	}
+	else if (p->prev->prev->rank < p->prev->rank)//
 	{
 		return (bottom_order_first(nil_a, nil_b));
 	}
